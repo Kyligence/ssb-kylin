@@ -66,7 +66,7 @@ OPTION="-D mapred.reduce.tasks=0 \
 -input ${HDFS_BASE_DIR}/tmp/input \
 -output ${HDFS_BASE_DIR}/data/output \
 -mapper ${dir}/dbgen.sh \
--file ${dir}/dbgen.sh -file ${dir}/example.conf -file ${ssb_home}/dbgen -file ${ssb_home}/dists.dss"
+-file ${dir}/dbgen.sh -file ${dir}/ssb.conf -file ${ssb_home}/dbgen -file ${ssb_home}/dists.dss"
 
 echo hadoop jar ${HADOOP_STREAMING_JAR} ${OPTION}
 
