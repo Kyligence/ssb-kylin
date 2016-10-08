@@ -1,0 +1,8 @@
+kylin.home: /kylin/demo/bin/..
+kylin.version:1.5.3
+commit:645104d151f2d94d9112471c7ddedb945e1fdeb0@KAP;1044f1dbb1096689ff69601f2b631f37a9a59c3b@ApacheKylin;Build with MANUAL at 2016-06-27 03:24:33;
+os.name:Linux
+os.arch:amd64
+os.version:2.6.32-573.18.1.el6.x86_64
+java.version:1.7.0_67
+java.vendor:Oracle Corporation

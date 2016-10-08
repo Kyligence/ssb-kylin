@@ -1,0 +1,14 @@
+{
+  "totalNumberFiles" : "1",
+  "partitioned" : "false",
+  "location" : "hdfs://ip-10-0-0-205.us-west-2.compute.internal:8020/user/root/ssb/data/supplier",
+  "tableName" : "supplier",
+  "lastAccessTime" : "0",
+  "owner" : "root",
+  "partitionColumns" : "",
+  "totalFileSize" : "10191187",
+  "outputformat" : "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat",
+  "EXD_STATUS" : "true",
+  "cardinality" : "122730,123023,128596,240,25,5,126941",
+  "inputformat" : "org.apache.hadoop.mapred.TextInputFormat"
+}
