@@ -18,7 +18,7 @@ Read more about Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~pon
 
    ```shell
    cd ..
-   EXPORT HADOOP_STREAMING_JAR=/usr/hdp/<version>/hadoop-mapreduce/hadoop-streaming.jar
+   export HADOOP_STREAMING_JAR=/usr/hdp/<version>/hadoop-mapreduce/hadoop-streaming.jar
    bin/run.sh
    ```
 
