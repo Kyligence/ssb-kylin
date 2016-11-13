@@ -14,11 +14,16 @@ Read more about Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~pon
    make
    ```
 
-2. Generate Data and Import into Hive
+2. Define the environment variable *HADOOP_STREAMING_JAR*
+
+   ```shell
+   export HADOOP_STREAMING_JAR=/usr/hdp/<version>/hadoop-mapreduce/hadoop-streaming.jar
+   ```
+
+3. Generate Data and Import into Hive
 
    ```shell
    cd ..
-   export HADOOP_STREAMING_JAR=/usr/hdp/<version>/hadoop-mapreduce/hadoop-streaming.jar
    bin/run.sh
    ```
 
@@ -26,7 +31,7 @@ Read more about Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~pon
 
 ## How to Config
 
-**SCALE** is the key scale factor, defined in *bin/dbgen.sh*. Valid range from 0.01 to 100+. 
+**SCALE** is the key scale factor, defined in *bin/dbgen.sh*. Valid range from 0.01 to 100+. Default value is 0.01.
 
 Other properties are defined in *bin/ssb.conf*.
 
@@ -47,11 +52,13 @@ cd $KYLIN_HOME
 bin/metastore.sh restore <path to cubemeta dir>
 ```
 
-Restart Kylin or click *Reload Metadata*. 
+Restart Kylin or click ``Reload Metadata``. 
 
 You could find new project *ssb*. Select the *ssb*, click *Disable* and *Purge* on the *ssb* cube at *Model* Tab to remove all old tempory files. And click *Build* next. The cube build will be finished in a few minutes.
 
 ## Query
+
+Six Hive external tables are created: *customer*, *dates*, *part*, *supplier* and *lineorder*. The sixth table is *p_lineorder* which is the partitioned table for *lineorder*. 
 
 Here is a list sample queries, the query parameter may be different between different *scale factor*. The sample data is generated randomly. 
 
@@ -59,7 +66,7 @@ Here is a list sample queries, the query parameter may be different between diff
 
 ```sql
 SELECT SUM(v_revenue) AS revenue
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey
 WHERE d_year = 1993
 ```
 
@@ -67,14 +74,14 @@ WHERE d_year = 1993
 
 ```sql
 SELECT SUM(v_revenue) AS revenue
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey
 WHERE d_yearmonthnum = 199401
 ```
 ##### Q1.3
 
 ```sql
 SELECT SUM(v_revenue) AS revenue
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey
 WHERE d_weeknuminyear = 6
 	AND d_year = 1994
 ```
@@ -82,7 +89,7 @@ WHERE d_weeknuminyear = 6
 
 ```sql
 SELECT SUM(lo_revenue) AS lo_revenue, d_year, p_brand
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN part ON lo_partkey = p_partkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN part ON lo_partkey = p_partkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
 WHERE p_category = 'MFGR#02'
 	AND s_region = 'AMERICA'
 GROUP BY d_year, p_brand
@@ -92,7 +99,7 @@ ORDER BY d_year, p_brand
 
 ```sql
 SELECT SUM(lo_revenue) AS lo_revenue, d_year, p_brand
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN part ON lo_partkey = p_partkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN part ON lo_partkey = p_partkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
 WHERE p_brand BETWEEN 'MFGR#0201' AND 'MFGR#0208'
 	AND s_region = 'ASIA'
 GROUP BY d_year, p_brand
@@ -102,7 +109,7 @@ ORDER BY d_year, p_brand
 
 ```sql
 SELECT SUM(lo_revenue) AS lo_revenue, d_year, p_brand
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN part ON lo_partkey = p_partkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN part ON lo_partkey = p_partkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
 WHERE p_brand = 'MFGR#0209'
 	AND s_region = 'EUROPE'
 GROUP BY d_year, p_brand
@@ -112,7 +119,7 @@ ORDER BY d_year, p_brand
 
 ```sql
 SELECT c_nation, s_nation, d_year, SUM(lo_revenue) AS lo_revenue
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
 WHERE c_region = 'ASIA'
 	AND s_region = 'ASIA'
 	AND d_year >= 1992
@@ -124,7 +131,7 @@ ORDER BY d_year ASC, lo_revenue DESC
 
 ```sql
 SELECT c_city, s_city, d_year, SUM(lo_revenue) AS lo_revenue
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
 WHERE c_nation = 'UNITED STATES'
 	AND s_nation = 'UNITED STATES'
 	AND d_year >= 1992
@@ -136,7 +143,7 @@ ORDER BY d_year ASC, lo_revenue DESC
 
 ```sql
 SELECT c_city, s_city, d_year, SUM(lo_revenue) AS lo_revenue
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
 WHERE (c_city = 'UNITED KI1'
 		OR c_city = 'UNITED KI5')
 	AND (s_city = 'UNITED KI1'
@@ -150,7 +157,7 @@ ORDER BY d_year ASC, lo_revenue DESC
 
 ```sql
 SELECT c_city, s_city, d_year, SUM(lo_revenue) AS lo_revenue
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
 WHERE (c_city = 'UNITED KI1'
 		OR c_city = 'UNITED KI5')
 	AND (s_city = 'UNITED KI1'
@@ -163,7 +170,7 @@ ORDER BY d_year ASC, lo_revenue DESC
 
 ```sql
 SELECT d_year, c_nation, SUM(lo_revenue) - SUM(lo_supplycost) AS profit
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey LEFT JOIN part ON lo_partkey = p_partkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey LEFT JOIN part ON lo_partkey = p_partkey
 WHERE c_region = 'AMERICA'
 	AND s_region = 'AMERICA'
 	AND (p_mfgr = 'MFGR#1'
@@ -175,7 +182,7 @@ ORDER BY d_year, c_nation
 
 ```sql
 SELECT d_year, s_nation, p_category, SUM(lo_revenue) - SUM(lo_supplycost) AS profit
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey LEFT JOIN part ON lo_partkey = p_partkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey LEFT JOIN part ON lo_partkey = p_partkey
 WHERE c_region = 'AMERICA'
 	AND s_region = 'AMERICA'
 	AND (d_year = 1997
@@ -189,7 +196,7 @@ ORDER BY d_year, s_nation, p_category
 
 ```sql
 SELECT d_year, s_city, p_brand, SUM(lo_revenue) - SUM(lo_supplycost) AS profit
-FROM v_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey LEFT JOIN part ON lo_partkey = p_partkey
+FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey LEFT JOIN part ON lo_partkey = p_partkey
 WHERE c_region = 'AMERICA'
 	AND s_nation = 'UNITED STATES'
 	AND (d_year = 1997

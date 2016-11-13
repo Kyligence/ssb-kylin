@@ -15,7 +15,7 @@
     "SSB.LINEORDER",
     "SSB.PART",
     "SSB.SUPPLIER",
-    "SSB.V_LINEORDER"
+    "SSB.P_LINEORDER"
   ],
   "models":[
 	"ssb"

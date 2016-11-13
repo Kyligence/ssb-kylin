@@ -48,7 +48,7 @@ done
 hive -e 'DROP DATABASE IF EXISTS SSB CASCADE;'
 
 # clean up previous data if available
-hadoop fs -rmr $HDFS_BASE_DIR
+hadoop fs -rm -r $HDFS_BASE_DIR
 hadoop fs -mkdir -p $HDFS_BASE_DIR
 hadoop fs -mkdir -p $HDFS_BASE_DIR/tmp
 hadoop fs -moveFromLocal $LOCAL_TMP_DIR/ssb/input $HDFS_BASE_DIR/tmp
@@ -72,5 +72,7 @@ echo hadoop jar ${HADOOP_STREAMING_JAR} ${OPTION}
 
 hadoop jar ${HADOOP_STREAMING_JAR} ${OPTION}
 
-echo "Run hive scripts...."
-hive -f $dir/../hive/create.sql
+echo "Creating Hive External Tables...."
+hive -f $dir/../hive/create_basic.sql
+echo "Creating Hive Partitioned Table, may cost some time..."
+hive -f $dir/../hive/create_partitions.sql
