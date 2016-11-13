@@ -41,6 +41,8 @@ Other properties are defined in *bin/ssb.conf*.
 
 **cust_city_max** and **supp_city_max** are used to define the number of city for each country in *customer* and *supplier* tables. If the total country is 30, and **cust_city_max=100**, **supp_city_max=10**, the *customer* table will have 3000 different cities, the *supplier* table will have 300 different cities.
 
+If the build job is killed by YARN, please increase YARN container memory settings.
+
 ## Load & Build Cube
 
 The Kylin project, model and cube has been designed in advance, you could import it into Kylin directly. The *Cube Metadata* locates under cubemeta directory.
