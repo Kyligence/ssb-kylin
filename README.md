@@ -28,6 +28,9 @@ Read more about Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~pon
    ```
 
 
+   If want to create partitioned Hive tables, please run 
+
+   ```bin/run.sh partition```
 
 ## How to Config
 

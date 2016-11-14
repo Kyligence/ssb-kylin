@@ -72,7 +72,13 @@ echo hadoop jar ${HADOOP_STREAMING_JAR} ${OPTION}
 
 hadoop jar ${HADOOP_STREAMING_JAR} ${OPTION}
 
-echo "Creating Hive External Tables...."
-hive -f $dir/../hive/create_basic.sql
-echo "Creating Hive Partitioned Table, may cost some time..."
-hive -f $dir/../hive/create_partitions.sql
+echo "Creating Hive External Tables"
+hive -f $dir/../hive/1_create_basic.sql
+if [ "$1" == "partition" ]
+then
+    echo "Creating Hive Partitioned Table, may cost some time..."
+    hive -f $dir/../hive/2_create_partitions.sql
+else
+    echo "Creating Hive View"
+    hive -f $dir/../hive/2_create_view.sql
+fi
