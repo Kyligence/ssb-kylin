@@ -1,0 +1,13 @@
+select c_city, s_city, d_year, sum(lo_revenue) as lo_revenue
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join customer on lo_custkey = c_custkey
+left join supplier on lo_suppkey = s_suppkey
+WHERE (c_city = 'CHINA    001'
+        OR c_city = 'CHINA    100')
+    AND (s_city = 'EGYPT    001'
+        OR s_city = 'EGYPT   033')
+    AND d_year >= 1992
+    AND d_year <= 1997
+group by c_city, s_city, d_year
+order by d_year asc, lo_revenue desc

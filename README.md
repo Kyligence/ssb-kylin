@@ -31,7 +31,7 @@ Read more about Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~pon
 
 ## How to Config
 
-**SCALE** is the key scale factor, defined in *bin/dbgen.sh*. Valid range from 0.01 to 100+. Default value is 0.01.
+**SCALE** is the key scale factor, defined in *bin/dbgen.sh*. Valid range from 0.01 to 100+. Default value is 0.1.
 
 Other properties are defined in *bin/ssb.conf*.
 
@@ -92,7 +92,7 @@ WHERE d_weeknuminyear = 6
 ```sql
 SELECT SUM(lo_revenue) AS lo_revenue, d_year, p_brand
 FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN part ON lo_partkey = p_partkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
-WHERE p_category = 'MFGR#02'
+WHERE p_category = 'MFGR#0201'
 	AND s_region = 'AMERICA'
 GROUP BY d_year, p_brand
 ORDER BY d_year, p_brand
@@ -112,7 +112,7 @@ ORDER BY d_year, p_brand
 ```sql
 SELECT SUM(lo_revenue) AS lo_revenue, d_year, p_brand
 FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN part ON lo_partkey = p_partkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
-WHERE p_brand = 'MFGR#0209'
+WHERE p_brand = 'MFGR#01010001'
 	AND s_region = 'EUROPE'
 GROUP BY d_year, p_brand
 ORDER BY d_year, p_brand
@@ -146,10 +146,10 @@ ORDER BY d_year ASC, lo_revenue DESC
 ```sql
 SELECT c_city, s_city, d_year, SUM(lo_revenue) AS lo_revenue
 FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
-WHERE (c_city = 'UNITED KI1'
-		OR c_city = 'UNITED KI5')
-	AND (s_city = 'UNITED KI1'
-		OR s_city = 'UNITED KI5')
+WHERE (c_city = 'CHINA    001'
+		OR c_city = 'CHINA    100')
+	AND (s_city = 'EGYPT    001'
+		OR s_city = 'EGYPT    033')
 	AND d_year >= 1992
 	AND d_year <= 1997
 GROUP BY c_city, s_city, d_year
@@ -160,11 +160,11 @@ ORDER BY d_year ASC, lo_revenue DESC
 ```sql
 SELECT c_city, s_city, d_year, SUM(lo_revenue) AS lo_revenue
 FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey
-WHERE (c_city = 'UNITED KI1'
-		OR c_city = 'UNITED KI5')
-	AND (s_city = 'UNITED KI1'
-		OR s_city = 'UNITED KI5')
-	AND d_yearmonth LIKE '%1997'
+WHERE(c_city = 'CHINA    001'
+        OR c_city = 'CHINA    100')
+    AND (s_city = 'EGYPT    001'
+        OR s_city = 'EGYPT   033')
+    AND d_yearmonth LIKE '%1997'
 GROUP BY c_city, s_city, d_year
 ORDER BY d_year ASC, lo_revenue DESC
 ```
@@ -175,8 +175,8 @@ SELECT d_year, c_nation, SUM(lo_revenue) - SUM(lo_supplycost) AS profit
 FROM p_lineorder LEFT JOIN dates ON lo_orderdate = d_datekey LEFT JOIN customer ON lo_custkey = c_custkey LEFT JOIN supplier ON lo_suppkey = s_suppkey LEFT JOIN part ON lo_partkey = p_partkey
 WHERE c_region = 'AMERICA'
 	AND s_region = 'AMERICA'
-	AND (p_mfgr = 'MFGR#1'
-		OR p_mfgr = 'MFGR#2')
+	AND (p_mfgr = 'MFGR#01'
+		OR p_mfgr = 'MFGR#02')
 GROUP BY d_year, c_nation
 ORDER BY d_year, c_nation
 ```
@@ -189,8 +189,8 @@ WHERE c_region = 'AMERICA'
 	AND s_region = 'AMERICA'
 	AND (d_year = 1997
 		OR d_year = 1998)
-	AND (p_mfgr = 'MFGR#1'
-		OR p_mfgr = 'MFGR#2')
+	AND (p_mfgr = 'MFGR#01'
+		OR p_mfgr = 'MFGR#02')
 GROUP BY d_year, s_nation, p_category
 ORDER BY d_year, s_nation, p_category
 ```
@@ -203,7 +203,7 @@ WHERE c_region = 'AMERICA'
 	AND s_nation = 'UNITED STATES'
 	AND (d_year = 1997
 		OR d_year = 1998)
-	AND p_category = 'MFGR#04'
+	AND p_category = 'MFGR#0104'
 GROUP BY d_year, s_city, p_brand
 ORDER BY d_year, s_city, p_brand
 ```
