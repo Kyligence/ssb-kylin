@@ -5,7 +5,7 @@ LOCAL_TMP_DIR=/tmp
 HDFS_BASE_DIR=/user/root/ssb/
 
 PARALLEL_TASKS=10
-SCALE=0.01
+SCALE=0.1
 
 # begin generating
 read TASK_NUM
