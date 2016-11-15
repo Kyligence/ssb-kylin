@@ -80,5 +80,5 @@ then
     hive -f $dir/../hive/2_create_partitions.sql
 else
     echo "Creating Hive View"
-    hive -f $dir/../hive/2_create_view.sql
+    hive -f $dir/../hive/2_create_views.sql
 fi
