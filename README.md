@@ -243,7 +243,7 @@ order by d_year, s_city, p_brand;
 ## 5. Result
 we test on our own cluster(4 nodes, 32 cpu, 100G memory for each node, scale factor 10.
 
-![](pictures/result.png)
+![](pictures/ssb_result.png)
 
 
 
