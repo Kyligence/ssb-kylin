@@ -50,11 +50,20 @@ If the build job is killed by YARN, please increase YARN container memory settin
    cd ..
    bin/run.sh
    ```
-
-
    If want to create partitioned Hive tables, please run 
 
    ```bin/run.sh partition```
+4. Make sure that data has already be created
+	 ```shell
+   hive
+   use ssb;
+   show tables;
+   select count(*) from p_lineorder;
+   ```
+
+   
+
+
 
 
 
@@ -254,8 +263,15 @@ spark.executor.instances 12
 spark.executor.memory 8g
 spark.driver.memory 8g
 ```
+version:
+```shell
+kap plus 2.2.0
+kylin 1.6.0
+spark sql xxx
+hive  xxx
+```
 
-
+####Result of q1.1~q4.3
 ![](pictures/ssb_result1.png)
 
 
