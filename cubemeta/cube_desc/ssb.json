@@ -112,47 +112,58 @@
     "rowkey_columns" : [ {
       "column" : "LO_PARTKEY",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "C_CITY",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "C_REGION",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "C_NATION",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "S_CITY",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "S_REGION",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "S_NATION",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "D_YEAR",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "D_YEARMONTH",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "D_YEARMONTHNUM",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     }, {
       "column" : "D_WEEKNUMINYEAR",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index": "eq"
     } ]
   },
   "signature" : "Fa+Iof7F1ze4dM2RKVq7bw==",
