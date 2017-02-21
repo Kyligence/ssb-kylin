@@ -38,7 +38,7 @@ If the build job is killed by YARN, please increase YARN container memory settin
    make
    ```
 
-2. Define the environment variable *HADOOP_STREAMING_JAR*
+2. Define the environment variable *HADOOP_STREAMING_JAR*(If you could not found this jar in your environment. You can try to use the jar in ssb-kylin/lib/hadoop-streaming.jar)
 
    ```shell
    export HADOOP_STREAMING_JAR=/usr/hdp/<version>/hadoop-mapreduce/hadoop-streaming.jar
