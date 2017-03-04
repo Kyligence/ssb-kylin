@@ -1,6 +1,6 @@
 # Star Schema Benchmark Tool for Apache Kylin
 
-##Incroduction to ssb benchmark
+##Introduction to ssb benchmark
 The Star Schema benchmark, or SSB, was devised to evaluate database system performance of star schema data warehouse queries. The schema for SSB is based on the TPC-H benchmark, but in a highly modified form. The SSB has been used to measure a number of major commercial database products on Linux to evaluate a new product. The Schema of the Star Schema Benchmark (SSB) is based on that of the TPC-H benchmark. The queries are also based on a few of the TPC-H queries, but the number of queries is rather small to make it easy for individuals to run SSB on different platforms.
 
 
