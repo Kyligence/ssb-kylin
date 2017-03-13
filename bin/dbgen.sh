@@ -1,14 +1,10 @@
 #!/bin/bash
 
-# configurations
-LOCAL_TMP_DIR=/tmp
-HDFS_BASE_DIR=/user/root/ssb/
-
-PARALLEL_TASKS=10
-SCALE=0.1
-
 # begin generating
 read TASK_NUM
+read HDFS_BASE_DIR
+read SCALE
+read PARALLEL_TASKS
 if [ $TASK_NUM == 1 ];then
 	for tbl in customer part supplier date
 	do

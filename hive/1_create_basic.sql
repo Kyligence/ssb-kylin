@@ -1,8 +1,8 @@
-CREATE DATABASE SSB;
+CREATE DATABASE <DATABASE>;
 
-USE SSB;
+USE <DATABASE>;
 
-CREATE TABLE SSB.CUSTOMER ( 
+CREATE TABLE <DATABASE>.CUSTOMER ( 
 C_CUSTKEY     INT,
 C_NAME        string,
 C_ADDRESS     string,
@@ -12,9 +12,9 @@ C_REGION      string,
 C_PHONE       string,
 C_MKTSEGMENT   string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|'
-LOCATION '/user/root/ssb/data/customer';
+LOCATION '<hdfs-dir>/data/customer';
 
-CREATE TABLE SSB.DATES ( 
+CREATE TABLE <DATABASE>.DATES ( 
 D_DATEKEY          INT,
 D_DATE             string,
 D_DAYOFWEEK        string,
@@ -33,9 +33,9 @@ D_LASTDAYINMONTHFL INT,
 D_HOLIDAYFL        INT,
 D_WEEKDAYFL        INT)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|'
-LOCATION '/user/root/ssb/data/date';
+LOCATION '<hdfs-dir>/data/date';
               
-CREATE TABLE SSB.PART ( 
+CREATE TABLE <DATABASE>.PART ( 
 P_PARTKEY     INT,
 P_NAME        string,
 P_MFGR        string,
@@ -46,9 +46,9 @@ P_TYPE        string,
 P_SIZE        INT,
 P_CONTAINER   string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|'
-LOCATION '/user/root/ssb/data/part';
+LOCATION '<hdfs-dir>/data/part';
 
-CREATE TABLE SSB.SUPPLIER ( 
+CREATE TABLE <DATABASE>.SUPPLIER ( 
 S_SUPPKEY     INT,
 S_NAME        string,
 S_ADDRESS     string,
@@ -57,9 +57,9 @@ S_NATION      string,
 S_REGION      string,
 S_PHONE       string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|'
-LOCATION '/user/root/ssb/data/supplier';
+LOCATION '<hdfs-dir>/data/supplier';
 
-CREATE TABLE SSB.LINEORDER ( 
+CREATE TABLE <DATABASE>.LINEORDER ( 
 LO_ORDERKEY       BIGINT,
 LO_LINENUMBER     BIGINT,
 LO_CUSTKEY        INT,
@@ -78,4 +78,4 @@ LO_TAX            BIGINT,
 LO_COMMITDATE     INT,
 LO_SHIPMODE       string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|'
-LOCATION '/user/root/ssb/data/lineorder';
+LOCATION '<hdfs-dir>/data/lineorder';

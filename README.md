@@ -52,7 +52,7 @@ If the build job is killed by YARN, please increase YARN container memory settin
    ```
    If want to create partitioned Hive tables, please run 
 
-   ```bin/run.sh partition```
+   ```bin/run.sh --partition```
 4. Make sure that data has already be created
 	 ```shell
    hive
