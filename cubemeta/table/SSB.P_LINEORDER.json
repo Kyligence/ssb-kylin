@@ -77,5 +77,6 @@
   } ],
   "database" : "SSB",
   "last_modified" : 1457444145578,
-  "source_type" : 0
+  "source_type" : 0,
+  "table_type" : "VIRTUAL_VIEW"
 }
