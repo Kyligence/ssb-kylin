@@ -115,9 +115,9 @@ echo hadoop jar ${HADOOP_STREAMING_JAR} ${OPTION}
 hadoop jar ${HADOOP_STREAMING_JAR} ${OPTION}
 
 echo "Creating Hive External Tables"
-ls hive/* | xargs -I {} cp {} {}.tmp
-sed -i -e "s/<DATABASE>/${database}/g" hive/*.tmp
-sed -i -e "s|<hdfs-dir>|${HDFS_BASE_DIR}|g" hive/*.tmp
+ls $dir/../hive/* | xargs -I {} cp {} {}.tmp
+sed -i -e "s/<DATABASE>/${database}/g" $dir/../hive/*.tmp
+sed -i -e "s|<hdfs-dir>|${HDFS_BASE_DIR}|g" $dir/../hive/*.tmp
 hive -f $dir/../hive/1_create_basic.sql.tmp
 if [ "${partition}" == "true" ]
 then
@@ -127,4 +127,4 @@ else
     echo "Creating Hive View"
     hive -f $dir/../hive/2_create_views.sql.tmp
 fi
-rm hive/*.tmp
+rm $dir/../hive/*.tmp
