@@ -1,6 +1,6 @@
 {
   "uuid" : "5c44df30-daec-486e-af90-927bf7851057",
-  "last_modified" : 1491917794386,
+  "last_modified" : 1491925122527,
   "version" : "1.5.3",
   "name" : "ssb",
   "model_name" : "ssb",
@@ -9,68 +9,68 @@
   "dimensions" : [ {
     "name" : "SSB.PART_DERIVED",
     "table" : "PART",
-    "column" : null,
-    "derived" : [ "P_MFGR" ]
+    "column" : "P_MFGR",
+    "derived" : null
   }, {
     "name" : "SSB.PART_DERIVED",
     "table" : "PART",
-    "column" : null,
-    "derived" : [ "P_CATEGORY" ]
+    "column" : "P_CATEGORY",
+    "derived" : null
   }, {
     "name" : "SSB.PART_DERIVED",
     "table" : "PART",
-    "column" : null,
-    "derived" : [ "P_BRAND" ]
+    "column" : "P_BRAND",
+    "derived" : null
   }, {
     "name" : "C_CITY",
     "table" : "CUSTOMER",
-    "column" : null,
-    "derived" : [ "C_CITY" ]
+    "column" : "C_CITY",
+    "derived" : null
   }, {
     "name" : "C_REGION",
     "table" : "CUSTOMER",
-    "column" : null,
-    "derived" : [ "C_REGION" ]
+    "column" : "C_REGION",
+    "derived" : null
   }, {
     "name" : "C_NATION",
     "table" : "CUSTOMER",
-    "column" : null,
-    "derived" : [ "C_NATION" ]
+    "column" : "C_NATION",
+    "derived" : null
   }, {
     "name" : "S_CITY",
     "table" : "SUPPLIER",
-    "column" : null,
-    "derived" : [ "S_CITY" ]
+    "column" : "S_CITY",
+    "derived" : null
   }, {
     "name" : "S_REGION",
     "table" : "SUPPLIER",
-    "column" : null,
-    "derived" : [ "S_REGION" ]
+    "column" : "S_REGION",
+    "derived" : null
   }, {
     "name" : "S_NATION",
     "table" : "SUPPLIER",
-    "column" : null,
-    "derived" : [ "S_NATION" ]
+    "column" : "S_NATION",
+    "derived" : null
   }, {
     "name" : "D_YEAR",
     "table" : "DATES",
-    "column" : null,
-    "derived" : [ "D_YEAR" ]
+    "column" : "D_YEAR",
+    "derived" : null
   }, {
     "name" : "D_YEARMONTH",
     "table" : "DATES",
-    "column" : null,
-    "derived" : [ "D_YEARMONTH" ]
+    "column" : "D_YEARMONTH",
+    "derived" : null
   }, {
     "name" : "D_YEARMONTHNUM",
     "table" : "DATES",
-    "column" : null,
-    "derived" : [ "D_YEARMONTHNUM" ]
+    "column" : "D_YEARMONTHNUM",
+    "derived" : null
   }, {
     "name" : "D_WEEKNUMINYEAR",
     "table" : "DATES",
-    "column" : null,
-    "derived" : [ "D_WEEKNUMINYEAR" ]
+    "column" : "D_WEEKNUMINYEAR",
+    "derived" : null
   } ],
   "measures" : [ {
     "name" : "_COUNT_",
@@ -115,22 +115,67 @@
   } ],
   "rowkey" : {
     "rowkey_columns" : [ {
-      "column" : "P_LINEORDER.LO_CUSTKEY",
-      "encoding" : "dict",
-      "isShardBy" : false
-    }, {
-      "column" : "P_LINEORDER.LO_SUPPKEY",
-      "encoding" : "dict",
-      "isShardBy" : false
-    }, {
-      "column" : "P_LINEORDER.LO_ORDERDATE",
-      "encoding" : "dict",
-      "isShardBy" : false
-    }, {
-      "column" : "P_LINEORDER.LO_PARTKEY",
+      "column" : "CUSTOMER.C_REGION",
       "encoding" : "dict",
       "isShardBy" : false,
       "index" : "eq"
+    }, {
+      "column" : "SUPPLIER.S_REGION",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "PART.P_MFGR",
+      "encoding" : "dict",
+      "isShardBy" : false
+    }, {
+      "column" : "DATES.D_YEAR",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "CUSTOMER.C_NATION",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "SUPPLIER.S_NATION",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "DATES.D_WEEKNUMINYEAR",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "DATES.D_YEARMONTH",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "DATES.D_YEARMONTHNUM",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "PART.P_CATEGORY",
+      "encoding" : "dict",
+      "isShardBy" : false
+    }, {
+      "column" : "SUPPLIER.S_CITY",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "CUSTOMER.C_CITY",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "PART.P_BRAND",
+      "encoding" : "dict",
+      "isShardBy" : false
     } ]
   },
   "hbase_mapping" : {
@@ -143,14 +188,13 @@
     } ]
   },
   "aggregation_groups" : [ {
-    "includes" : [ "P_LINEORDER.LO_CUSTKEY", "P_LINEORDER.LO_SUPPKEY", "P_LINEORDER.LO_ORDERDATE", "P_LINEORDER.LO_PARTKEY" ],
+    "includes" : [ "CUSTOMER.C_CITY", "CUSTOMER.C_REGION", "CUSTOMER.C_NATION", "SUPPLIER.S_CITY", "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "DATES.D_YEAR", "DATES.D_YEARMONTH", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR", "PART.P_MFGR", "PART.P_CATEGORY", "PART.P_BRAND" ],
     "select_rule" : {
-      "hierarchy_dims" : [ [ ], [ ], [ ] ],
+      "hierarchy_dims" : [ [ "CUSTOMER.C_REGION", "CUSTOMER.C_NATION", "CUSTOMER.C_CITY" ], [ "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "SUPPLIER.S_CITY" ], [ "DATES.D_YEAR", "DATES.D_YEARMONTH", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR" ], [ "PART.P_MFGR", "PART.P_CATEGORY", "PART.P_BRAND" ] ],
       "mandatory_dims" : [ ],
       "joint_dims" : [ ]
     }
   } ],
-  "signature" : "rcrBoInvN/VXufH2NQJBRg==",
   "notify_list" : [ ],
   "status_need_notify" : [ ],
   "partition_date_start" : 694224000000,
