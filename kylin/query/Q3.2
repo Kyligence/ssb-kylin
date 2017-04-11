@@ -1,5 +1,5 @@
 select c_city, s_city, d_year, sum(lo_revenue) as lo_revenue
-from v_lineorder
+from p_lineorder
 left join dates on lo_orderdate = d_datekey
 left join customer on lo_custkey = c_custkey
 left join supplier on lo_suppkey = s_suppkey
