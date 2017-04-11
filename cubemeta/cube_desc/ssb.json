@@ -127,12 +127,12 @@
     }, {
       "column" : "PART.P_MFGR",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index" : "eq"
     }, {
       "column" : "DATES.D_YEAR",
       "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
+      "isShardBy" : false
     }, {
       "column" : "CUSTOMER.C_NATION",
       "encoding" : "dict",
@@ -161,7 +161,8 @@
     }, {
       "column" : "PART.P_CATEGORY",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index" : "eq"
     }, {
       "column" : "SUPPLIER.S_CITY",
       "encoding" : "dict",
@@ -175,7 +176,8 @@
     }, {
       "column" : "PART.P_BRAND",
       "encoding" : "dict",
-      "isShardBy" : false
+      "isShardBy" : false,
+      "index" : "eq"
     } ]
   },
   "hbase_mapping" : {
