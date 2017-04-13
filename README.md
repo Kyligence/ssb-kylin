@@ -124,7 +124,7 @@ from p_lineorder
 left join dates on lo_orderdate = d_datekey
 left join part on lo_partkey = p_partkey
 left join supplier on lo_suppkey = s_suppkey
-where p_category = 'MFGR#0702' and s_region = 'AMERICA'
+where p_category = 'MFGR#12' and s_region = 'AMERICA'
 group by d_year, p_brand
 order by d_year, p_brand;
 ```
@@ -136,7 +136,7 @@ from p_lineorder
 left join dates on lo_orderdate = d_datekey
 left join part on lo_partkey = p_partkey
 left join supplier on lo_suppkey = s_suppkey
-where p_brand between 'MFGR#04040394' and 'MFGR#04040494' and s_region = 'ASIA'
+where p_brand between 'MFGR#2221' and 'MFGR#2228' and s_region = 'ASIA'
 group by d_year, p_brand
 order by d_year, p_brand;
 ```
@@ -148,7 +148,7 @@ from p_lineorder
 left join dates on lo_orderdate = d_datekey
 left join part on lo_partkey = p_partkey
 left join supplier on lo_suppkey = s_suppkey
-where p_brand = 'MFGR#04040394' and s_region = 'EUROPE'
+where p_brand = 'MFGR#2239' and s_region = 'EUROPE'
 group by d_year, p_brand
 order by d_year, p_brand;
 ```
@@ -185,12 +185,11 @@ from p_lineorder
 left join dates on lo_orderdate = d_datekey
 left join customer on lo_custkey = c_custkey
 left join supplier on lo_suppkey = s_suppkey
-where (c_city='UNITED KI040' or c_city='UNITED KI010')
-and (s_city='UNITED KI040' or s_city='UNITED KI010')
+where (c_city='UNITED KI1' or c_city='UNITED KI5')
+and (s_city='UNITED KI1' or s_city='UNITED KI5')
 and d_year >= 1992 and d_year <= 1997
 group by c_city, s_city, d_year
 order by d_year asc, lo_revenue desc;
-
 ```
 ##### Q3.4
 
@@ -200,10 +199,9 @@ from p_lineorder
 left join dates on lo_orderdate = d_datekey
 left join customer on lo_custkey = c_custkey
 left join supplier on lo_suppkey = s_suppkey
-where (c_city='UNITED KI040' or c_city='UNITED KI010') and (s_city='UNITED KI040' or s_city='UNITED KI010') and d_yearmonth = 'Mar1997'
+where (c_city='UNITED KI1' or c_city='UNITED KI5') and (s_city='UNITED KI1' or s_city='UNITED KI5') and d_yearmonth = 'Dec1997'
 group by c_city, s_city, d_year
 order by d_year asc, lo_revenue desc;
-
 ```
 ##### Q4.1
 
@@ -214,7 +212,7 @@ left join dates on lo_orderdate = d_datekey
 left join customer on lo_custkey = c_custkey
 left join supplier on lo_suppkey = s_suppkey
 left join part on lo_partkey = p_partkey
-where c_region = 'AMERICA' and s_region = 'AMERICA' and (p_mfgr = 'MFGR#01' or p_mfgr = 'MFGR#02')
+where c_region = 'AMERICA' and s_region = 'AMERICA' and (p_mfgr = 'MFGR#1' or p_mfgr = 'MFGR#2')
 group by d_year, c_nation
 order by d_year, c_nation;
 ```
@@ -229,7 +227,7 @@ left join supplier on lo_suppkey = s_suppkey
 left join part on lo_partkey = p_partkey
 where c_region = 'AMERICA'and s_region = 'AMERICA'
 and (d_year = 1997 or d_year = 1998)
-and (p_mfgr = 'MFGR#01' or p_mfgr = 'MFGR#02')
+and (p_mfgr = 'MFGR#1' or p_mfgr = 'MFGR#2')
 group by d_year, s_nation, p_category
 order by d_year, s_nation, p_category;
 ```
@@ -244,7 +242,7 @@ left join supplier on lo_suppkey = s_suppkey
 left join part on lo_partkey = p_partkey
 where c_region = 'AMERICA'and s_nation = 'UNITED STATES'
 and (d_year = 1997 or d_year = 1998)
-and p_category = 'MFGR#0103'
+and p_category = 'MFGR#14'
 group by d_year, s_city, p_brand
 order by d_year, s_city, p_brand;
 ```
