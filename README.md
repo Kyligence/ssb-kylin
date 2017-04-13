@@ -265,14 +265,11 @@ spark.driver.memory 8g
 ```
 version:
 ```shell
-kap plus 2.2.0
-kylin 1.6.0
-spark sql xxx
-hive  xxx
+kylin 2.0.0 beta2
 ```
 
 ####Result of q1.1~q4.3
-![](pictures/ssb_result1.png)
+![](pictures/ssb_result_default.png)
 
 
 
