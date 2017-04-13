@@ -268,7 +268,7 @@ version:
 kylin 2.0.0 beta2
 ```
 
-####Result of q1.1~q4.3
+#### Result of q1.1~q4.3
 ![](pictures/ssb_result_default.png)
 
 
