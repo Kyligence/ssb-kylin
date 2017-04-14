@@ -252,24 +252,18 @@ cluster info:
 ```shell
 4 nodes
 32 cpu, 100G memory for each node
-scale factor 10
 ```
-spark config: 
+<!--spark config: 
 ```shell
 spark.executor.cores 5
 spark.executor.instances 12
 spark.executor.memory 8g
 spark.driver.memory 8g
-```
+```-->
 version:
 ```shell
 kylin 2.0.0 beta2
 ```
 
-#### Result of q1.1~q4.3
+#### Result of Kylin 2.0.0 beta2
 ![](pictures/ssb_result_default.png)
-
-
-
-
-
