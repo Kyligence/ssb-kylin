@@ -1,18 +1,19 @@
-# Star Schema Benchmark Tool for Apache Kylin
+Star Schema Benchmark Tool for Apache Kylin
+----------------
 
-##Introduction to ssb benchmark
-The Star Schema benchmark, or SSB, was devised to evaluate database system performance of star schema data warehouse queries. The schema for SSB is based on the TPC-H benchmark, but in a highly modified form. The SSB has been used to measure a number of major commercial database products on Linux to evaluate a new product. The Schema of the Star Schema Benchmark (SSB) is based on that of the TPC-H benchmark. The queries are also based on a few of the TPC-H queries, but the number of queries is rather small to make it easy for individuals to run SSB on different platforms.
+# Introduction to ssb benchmark
+The Star Schema benchmark, or SSB, was devised to evaluate database system performance of star schema data warehouse queries. The schema for SSB is based on the TPC-H benchmark, but in a highly modified form. The queries are also based on a few of the TPC-H queries, but the number of queries is rather small to make it easy for individuals to run SSB on different platforms. The SSB has been used to measure a number of major commercial database products on Linux.
 
+**Schema of ssb benchmark**
 
-schema of ssb benchmark
 ![](pictures/ssb_schema.png)
 
 Read more about Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~poneil/StarSchemaB.pdf)
 
-##About this tool
-The benchmark tool is built on the original SSB-DBGen(https://github.com/electrum/ssb-dbgen). We extend the tools to support column cardinality configuration.You can test the performance of Apache Kylin in ssb benchmark by using this tool.
+# About this tool
+The benchmark tool is built on the original SSB-DBGen(https://github.com/electrum/ssb-dbgen). We extend the tools to support column cardinality configuration. You can test the performance of Apache Kylin in ssb benchmark by using this tool.
 
-#How to use
+# How to use
 ## 1. Config parameters
 
 **SCALE** is the key scale factor, defined in *bin/dbgen.sh*. Valid range from 0.01 to 100+. Default value is 0.1.
@@ -26,7 +27,6 @@ Other properties are defined in *bin/ssb.conf*.
 **cust_city_max** and **supp_city_max** are used to define the number of city for each country in *customer* and *supplier* tables. If the total country is 30, and **cust_city_max=100**, **supp_city_max=10**, the *customer* table will have 3000 different cities, the *supplier* table will have 300 different cities.
 
 If the build job is killed by YARN, please increase YARN container memory settings.
-
 
 ## 2. Generate Data
 
@@ -50,23 +50,21 @@ If the build job is killed by YARN, please increase YARN container memory settin
    cd ..
    bin/run.sh
    ```
-   If want to create partitioned Hive tables, please run 
 
-   ```bin/run.sh --partition```
+   If want to change the *scale factor* to 10:
+
+   ``` shell
+   bin/run.sh --scale 10
+   ```
+
 4. Make sure that data has already be created
-	 ```shell
+
+   ```shell
    hive
    use ssb;
    show tables;
    select count(*) from p_lineorder;
    ```
-
-   
-
-
-
-
-
 ## 3. Load & Build Cube
 
 The Kylin project, model and cube has been designed in advance, you could import it into Kylin directly. The *Cube Metadata* locates under cubemeta directory.
@@ -84,12 +82,11 @@ You could find new project *ssb*. Select the *ssb*, click *Disable* and *Purge* 
 
 ## 4. Query
 
-
 Six Hive external tables are created: *customer*, *dates*, *part*, *supplier* and *lineorder*. The sixth table is *p_lineorder* which is the partitioned table for *lineorder*. 
 
 Here is a list sample queries, the query parameter may be different between different *scale factor*. The sample data is generated randomly. 
 
-<font color=	#DC143C size=5>notice that the query may be a little different for different scale factor. And queries below are for scale factor 10</font>
+<font color=#DC143C size=5>notice that the query may be a little different for different scale factor. And queries below are for scale factor 10</font>
 
 ##### Q1.1
 
