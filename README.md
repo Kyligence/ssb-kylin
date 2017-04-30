@@ -1,44 +1,50 @@
-Star Schema Benchmark Tool for Apache Kylin
-----------------
+# Star Schema Benchmark on Apache Kylin
 
-# Introduction to ssb benchmark
-The Star Schema benchmark, or SSB, was devised to evaluate database system performance of star schema data warehouse queries. The schema for SSB is based on the TPC-H benchmark, but in a highly modified form. The queries are also based on a few of the TPC-H queries, but the number of queries is rather small to make it easy for individuals to run SSB on different platforms. The SSB has been used to measure a number of major commercial database products on Linux.
+The Star Schema Benchmark, or SSB, was devised to evaluate database system performance of star schema data warehouse queries. The schema for SSB is based on the TPC-H benchmark, but in a highly modified form. The queries are also based on the TPC-H queries, but the number of queries is reduced to make it easy for individuals to run SSB on different platforms. The SSB has been used to measure a number of major commercial database products on Linux.
 
-**Schema of ssb benchmark**
+Read more about the Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~poneil/StarSchemaB.pdf)
+
+**Table Schema of SSB**
 
 ![](pictures/ssb_schema.png)
 
-Read more about Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~poneil/StarSchemaB.pdf)
+The remaining of this document is steps to run SSB on Apache Kylin and experiment results.
 
-# About this tool
-The benchmark tool is built on the original SSB-DBGen(https://github.com/electrum/ssb-dbgen). We extend the tools to support column cardinality configuration. You can test the performance of Apache Kylin in ssb benchmark by using this tool.
+## 1. Configuration Parameters
 
-# How to use
-## 1. Config parameters
+Before we start, you could adjust parameters to customize the SSB data set that is going to be generated. The default setting generates the standard SSB data set and produces comparable result to other SSB tests.
 
-**SCALE** is the key scale factor, defined in *bin/dbgen.sh*. Valid range from 0.01 to 100+. Default value is 0.1.
+We extended [the original SSB-DBGen](https://github.com/electrum/ssb-dbgen) tools to support column cardinality configuration.
 
-Other properties are defined in *bin/ssb.conf*.
+**SCALE** is the key scale factor, defined in `bin/dbgen.sh`. Valid range from 0.01 to 100+. Default value is 0.1.
 
-**customer_base**, **part_base**, **supply_base**, **date_base** and **lineorder_base** are used to set the *base row number* for each table(*customer*, *part*, *supply*, *date*, *lineorder*). The total row number = *base row number* * *scale factor*.
+Other properties in `bin/ssb.conf`:
 
-**maux_max**, **cat_max**, **brand_max** are used to define the hierarchy  scale.  For example, **maux_max**=10, **cat_max=10**, **brand_max=10** means total 10 manufactures, and each manufacture has most 10 category parts, and each category has most 10 brands. So the cardinality for the *manufacture* is 10, for *category* is 100, for *brand* is 1000.
+- **customer_base**, **part_base**, **supply_base**, **date_base** and **lineorder_base** are used to set the *base row number* for each table (*customer*, *part*, *supply*, *date*, *lineorder*). The total row number = *base row number* * *scale factor*.
 
-**cust_city_max** and **supp_city_max** are used to define the number of city for each country in *customer* and *supplier* tables. If the total country is 30, and **cust_city_max=100**, **supp_city_max=10**, the *customer* table will have 3000 different cities, the *supplier* table will have 300 different cities.
 
-If the build job is killed by YARN, please increase YARN container memory settings.
+
+- **maux_max**, **cat_max**, **brand_max** are used to define the hierarchy  scale.  For example, **maux_max**=10, **cat_max=10**, **brand_max=10** means total 10 manufactures, and each manufacture has most 10 category parts, and each category has most 10 brands. So the cardinality for the *manufacture* is 10, for *category* is 100, for *brand* is 1000.
+
+
+
+- **cust_city_max** and **supp_city_max** are used to define the number of city for each country in *customer* and *supplier* tables. If the total country is 30, and **cust_city_max=100**, **supp_city_max=10**, the *customer* table will have 3000 different cities, the *supplier* table will have 300 different cities.
+
+
+The data generation executes in YARN, please increase YARN container memory if you hit memory issue.
 
 ## 2. Generate Data
 
 1. Compile SSB-Benchmark
 
    ```shell
+   # git clone this repo
    cd ssb-benchmark
    make clean
    make
    ```
 
-2. Define the environment variable *HADOOP_STREAMING_JAR*(If you could not found this jar in your environment. You can try to use the jar in ssb-kylin/lib/hadoop-streaming.jar)
+2. Define the environment variable `HADOOP_STREAMING_JAR`. If you could not found this jar in your environment. You can use the jar in `ssb-kylin/lib/hadoop-streaming.jar`.
 
    ```shell
    export HADOOP_STREAMING_JAR=/usr/hdp/<version>/hadoop-mapreduce/hadoop-streaming.jar
@@ -86,7 +92,7 @@ Six Hive external tables are created: *customer*, *dates*, *part*, *supplier* an
 
 Here is a list sample queries, the query parameter may be different between different *scale factor*. The sample data is generated randomly. 
 
-<font color=#DC143C size=5>notice that the query may be a little different for different scale factor. And queries below are for scale factor 10</font>
+*Notice that the queries may be slightly different for different scale factor in the filtering constants. The queries below are tested with scale factor 10.*
 
 ##### Q1.1
 
@@ -245,22 +251,13 @@ order by d_year, s_city, p_brand;
 ```
 
 ## 5. Result
-cluster info:
-```shell
-4 nodes
-32 cpu, 100G memory for each node
-```
-<!--spark config: 
-```shell
-spark.executor.cores 5
-spark.executor.instances 12
-spark.executor.memory 8g
-spark.driver.memory 8g
-```-->
-version:
-```shell
-kylin 2.0.0 beta2
-```
+
+Cluster info:
+- 4 nodes
+- 32 cpu, 100G memory for each node
+
+Kylin version:
+- kylin 2.0.0 beta2
 
 #### Result of Kylin 2.0.0 beta2
 ![](pictures/ssb_result_default.png)
