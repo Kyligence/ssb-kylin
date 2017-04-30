@@ -1,6 +1,6 @@
 # Star Schema Benchmark on Apache Kylin
 
-The Star Schema Benchmark, or SSB, was devised to evaluate database system performance of star schema data warehouse queries. The schema for SSB is based on the TPC-H benchmark, but in a highly modified form. The queries are also based on the TPC-H queries, but the number of queries is reduced to make it easy for individuals to run SSB on different platforms. The SSB has been used to measure a number of major commercial database products on Linux.
+The Star Schema Benchmark, or SSB, was devised to evaluate database system performance of star schema data warehouse queries. The schema for SSB is based on the [TPC-H benchmark](http://www.tpc.org/tpch/), but in a modified form. The queries are also based on the TPC-H queries, but the number of queries is reduced to make it easy for individuals to run SSB on different platforms. The SSB has been used to measure a number of major commercial database products on Linux.
 
 Read more about the Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~poneil/StarSchemaB.pdf)
 
@@ -253,8 +253,7 @@ order by d_year, s_city, p_brand;
 ## 5. Result
 
 Cluster info:
-- 4 nodes
-- 32 cpu, 100G memory for each node
+- 4 nodes; 32 cores, 100 GB memory for each node
 
 Kylin version:
 - kylin 2.0.0 beta2
