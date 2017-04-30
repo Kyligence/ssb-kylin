@@ -258,12 +258,12 @@ Cluster info:
 Kylin version:
 - kylin 2.0.0 beta2
 
-Queries are run multiple times and record the average response time.
+Queries are run multiple times and the average response times are recorded.
 
 #### Result of Kylin 2.0.0 beta2
 ![](pictures/ssb_result_default.png)
 
-All query response times are under 600 ms and most of them are under 200 ms. The low response time is relatively sensitive to errors. That is why some SF-10 queries seem slower than SF-40 queries, although they should be the same faster overall.
+All query response times are under 600 ms and most of them are under 200 ms. The low response time is relatively sensitive to errors. That is why some SF-10 queries seem slower than SF-40 queries, although they should be the same fast overall.
 
 The result shows that Kylin is the same fast regardless of the size of the generated SSB data set. This confirms that Kylin can achieve O(1) query latency providing the right precalculation is captured by model and cube.
 
