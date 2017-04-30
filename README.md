@@ -2,7 +2,7 @@
 
 The Star Schema Benchmark, or SSB, was devised to evaluate database system performance of star schema data warehouse queries. The schema for SSB is based on the [TPC-H benchmark](http://www.tpc.org/tpch/), but in a modified form. The queries are also based on the TPC-H queries, but the number of queries is reduced to make it easy for individuals to run SSB on different platforms. The SSB has been used to measure a number of major commercial database products on Linux.
 
-Read more about the Star Schema Benchmark: [PDF Download](http://www.cs.umb.edu/~poneil/StarSchemaB.pdf)
+Read more about the Star Schema Benchmark: [Paper Download](http://www.cs.umb.edu/~poneil/StarSchemaB.pdf)
 
 **Table Schema of SSB**
 
