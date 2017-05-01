@@ -263,8 +263,11 @@ Queries are run multiple times and the average response times are recorded.
 #### Result of Kylin 2.0.0 beta2
 ![](pictures/ssb_result_default.png)
 
-All query response times are under 600 ms and most of them are under 200 ms. The low response time is relatively sensitive to errors. That is why some SF-10 queries seem slower than SF-40 queries, although they should be the same fast overall.
+All query response times are under 600 ms and most of them are under 200 ms. More importantly, Kylin is the same fast regardless of the size of the data set. This confirms that Kylin can achieve O(1) query latency providing the right precalculation is captured by model and cube.
+
+#### Result of Kylin vs. Hive 
 
 ![](pictures/ssb_kylin_vs_hive.png)
 
-The result shows that Kylin is the same fast regardless of the size of the generated SSB data set. This confirms that Kylin can achieve O(1) query latency providing the right precalculation is captured by model and cube. Compared with Kylin, HIVE query time increase linearly as the data set grows. 
+The above compares Kylin and Hive running on the same hardware, shows their average response time on each data set. Kylin is a flat line because of its stable response time across all data sets. Hive query takes much longer to complete, the average is 140 seconds at minimal. Also Hive response time increases linearly as the data size grows. This shows that Hive is O(N) in time complexity while Kylin is O(1), where N is the size of data.
+
