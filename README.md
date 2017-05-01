@@ -16,11 +16,11 @@ Before we start, you could adjust parameters to customize the SSB data set that 
 
 We extended [the original SSB-DBGen](https://github.com/electrum/ssb-dbgen) tools to support column cardinality configuration.
 
-**SCALE** is the key scale factor, defined in `bin/dbgen.sh`. Valid range from 0.01 to 100+. Default value is 0.1.
+**SCALE** is the key scale factor，ranging from 0.01 to 100+. Default value is 0.1.
 
 Other properties in `bin/ssb.conf`:
 
-- **customer_base**, **part_base**, **supply_base**, **date_base** and **lineorder_base** are used to set the *base row number* for each table (*customer*, *part*, *supply*, *date*, *lineorder*). The total row number = *base row number* * *scale factor*.
+- **customer_base**, **part_base**, **supply_base**, **date_base** and **lineorder_base** are used to set the *base row number* for each table (*customer*, *part*, *supply*, *date*, *lineorder*). *date* table's row number is **data_base**, while others' row number = *base row number* * *scale factor*.
 
 
 
