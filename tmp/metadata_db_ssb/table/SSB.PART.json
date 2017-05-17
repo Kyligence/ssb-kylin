@@ -1,0 +1,46 @@
+{
+  "uuid" : "884aee03-c158-423b-866b-8569015386f0",
+  "last_modified" : 1495004651240,
+  "version" : "2.0.0",
+  "name" : "PART",
+  "columns" : [ {
+    "id" : "1",
+    "name" : "P_PARTKEY",
+    "datatype" : "integer"
+  }, {
+    "id" : "2",
+    "name" : "P_NAME",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "3",
+    "name" : "P_MFGR",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "4",
+    "name" : "P_CATEGORY",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "5",
+    "name" : "P_BRAND",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "6",
+    "name" : "P_COLOR",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "7",
+    "name" : "P_TYPE",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "8",
+    "name" : "P_SIZE",
+    "datatype" : "integer"
+  }, {
+    "id" : "9",
+    "name" : "P_CONTAINER",
+    "datatype" : "varchar(256)"
+  } ],
+  "source_type" : 0,
+  "table_type" : "MANAGED_TABLE",
+  "database" : "SSB"
+}
