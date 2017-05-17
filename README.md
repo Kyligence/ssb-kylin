@@ -100,7 +100,9 @@ Here is a list sample queries, the query parameter may be different between diff
 select sum(v_revenue) as revenue
 from p_lineorder
 left join dates on lo_orderdate = d_datekey
-where d_year = 1993;
+where d_year = 1993
+and lo_discount between 1 and 3
+and lo_quantity < 25;
 ```
 
 ##### Q1.2
@@ -109,7 +111,9 @@ where d_year = 1993;
 select sum(v_revenue) as revenue
 from p_lineorder
 left join dates on lo_orderdate = d_datekey
-where d_yearmonthnum = 199401;
+where d_yearmonthnum = 199401
+and lo_discount between 4 and 6
+and lo_quantity between 26 and 35;
 ```
 ##### Q1.3
 
@@ -117,7 +121,9 @@ where d_yearmonthnum = 199401;
 select sum(v_revenue) as revenue
 from p_lineorder
 left join dates on lo_orderdate = d_datekey
-where d_weeknuminyear = 6 and d_year = 1994;
+where d_weeknuminyear = 6 and d_year = 1994
+and lo_discount between 5 and 7
+and lo_quantity between 26 and 35;
 ```
 ##### Q2.1
 
