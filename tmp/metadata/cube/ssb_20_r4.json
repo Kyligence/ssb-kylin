@@ -1,0 +1,15 @@
+{
+  "uuid" : "3a1a366a-96e6-4d45-bd09-5b1f88d8b220",
+  "last_modified" : 1495024616003,
+  "version" : "2.0.0",
+  "name" : "ssb_20_r4",
+  "owner" : "ADMIN",
+  "descriptor" : "ssb_20_r4",
+  "cost" : 50,
+  "status" : "DISABLED",
+  "segments" : [ ],
+  "create_time_utc" : 1495015804916,
+  "input_records_count" : 0,
+  "input_records_size" : 0,
+  "size_kb" : 0
+}

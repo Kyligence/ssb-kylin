@@ -1,0 +1,12 @@
+{
+  "sample_rows" : null,
+  "cardinalityScale" : "",
+  "data_source_properties" : { },
+  "last_build_job_id" : null,
+  "last_modified" : 1495024578840,
+  "last_modified_time" : null,
+  "table_name" : "SSB_SF_20.DATES",
+  "total_rows" : null,
+  "uuid" : "0827aaeb-37c5-42f3-a132-cfdc32f080b2",
+  "version" : "2.0.0"
+}

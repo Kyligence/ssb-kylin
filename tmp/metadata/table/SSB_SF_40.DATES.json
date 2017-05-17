@@ -1,0 +1,78 @@
+{
+  "uuid" : "d37961ac-3251-487e-baef-9fddc2a6717a",
+  "last_modified" : 1495004477302,
+  "version" : "2.0.0",
+  "name" : "DATES",
+  "columns" : [ {
+    "id" : "1",
+    "name" : "D_DATEKEY",
+    "datatype" : "integer"
+  }, {
+    "id" : "2",
+    "name" : "D_DATE",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "3",
+    "name" : "D_DAYOFWEEK",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "4",
+    "name" : "D_MONTH",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "5",
+    "name" : "D_YEAR",
+    "datatype" : "integer"
+  }, {
+    "id" : "6",
+    "name" : "D_YEARMONTHNUM",
+    "datatype" : "integer"
+  }, {
+    "id" : "7",
+    "name" : "D_YEARMONTH",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "8",
+    "name" : "D_DAYNUMINWEEK",
+    "datatype" : "integer"
+  }, {
+    "id" : "9",
+    "name" : "D_DAYNUMINMONTH",
+    "datatype" : "integer"
+  }, {
+    "id" : "10",
+    "name" : "D_DAYNUMINYEAR",
+    "datatype" : "integer"
+  }, {
+    "id" : "11",
+    "name" : "D_MONTHNUMINYEAR",
+    "datatype" : "integer"
+  }, {
+    "id" : "12",
+    "name" : "D_WEEKNUMINYEAR",
+    "datatype" : "integer"
+  }, {
+    "id" : "13",
+    "name" : "D_SELLINGSEASON",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "14",
+    "name" : "D_LASTDAYINWEEKFL",
+    "datatype" : "integer"
+  }, {
+    "id" : "15",
+    "name" : "D_LASTDAYINMONTHFL",
+    "datatype" : "integer"
+  }, {
+    "id" : "16",
+    "name" : "D_HOLIDAYFL",
+    "datatype" : "integer"
+  }, {
+    "id" : "17",
+    "name" : "D_WEEKDAYFL",
+    "datatype" : "integer"
+  } ],
+  "source_type" : 0,
+  "table_type" : "MANAGED_TABLE",
+  "database" : "SSB_SF_40"
+}

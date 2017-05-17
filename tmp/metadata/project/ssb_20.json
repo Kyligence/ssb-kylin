@@ -1,0 +1,19 @@
+{
+  "uuid" : "2eaca32a-a33e-4b69-83dd-0bb8b1f8c970",
+  "last_modified" : 1495015804918,
+  "version" : "2.0.0",
+  "name" : "ssb_20",
+  "tables" : [ "ssb_sf_20.CUSTOMER", "SSB_SF_20.PART", "ssb_sf_20.LINEORDER", "ssb_sf_20.DATES", "SSB_SF_20.P_LINEORDER", "ssb_sf_20.PART", "SSB_SF_20.SUPPLIER", "SSB_SF_20.DATES", "ssb_sf_20.SUPPLIER", "SSB_SF_20.CUSTOMER", "ssb_sf_20.P_LINEORDER" ],
+  "owner" : null,
+  "status" : null,
+  "create_time_utc" : 0,
+  "last_update_time" : null,
+  "description" : null,
+  "realizations" : [ {
+    "type" : "CUBE",
+    "realization" : "ssb_20_r4"
+  } ],
+  "models" : [ "ssb_20" ],
+  "ext_filters" : [ ],
+  "override_kylin_properties" : { }
+}

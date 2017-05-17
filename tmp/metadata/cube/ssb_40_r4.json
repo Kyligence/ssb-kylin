@@ -1,0 +1,15 @@
+{
+  "uuid" : "2424e1ca-4d87-477a-b47c-475b4480e82d",
+  "last_modified" : 1495024625954,
+  "version" : "2.0.0",
+  "name" : "ssb_40_r4",
+  "owner" : "ADMIN",
+  "descriptor" : "ssb_40_r4",
+  "cost" : 50,
+  "status" : "DISABLED",
+  "segments" : [ ],
+  "create_time_utc" : 1495013345014,
+  "input_records_count" : 0,
+  "input_records_size" : 0,
+  "size_kb" : 0
+}
