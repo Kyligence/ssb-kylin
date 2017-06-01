@@ -211,13 +211,22 @@
     } ]
   },
   "aggregation_groups" : [ {
-    "includes" : [ "CUSTOMER.C_CITY", "CUSTOMER.C_NATION", "CUSTOMER.C_REGION", "SUPPLIER.S_CITY", "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "DATES.D_YEARMONTHNUM", "DATES.D_YEARMONTH", "DATES.D_WEEKNUMINYEAR", "DATES.D_YEAR", "PART.P_BRAND", "PART.P_CATEGORY", "PART.P_MFGR", "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT" ],
+    "includes" : [ "CUSTOMER.C_CITY", "CUSTOMER.C_NATION", "CUSTOMER.C_REGION", "SUPPLIER.S_CITY", "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "DATES.D_YEARMONTH", "DATES.D_YEAR", "PART.P_BRAND", "PART.P_CATEGORY", "PART.P_MFGR" ],
     "select_rule" : {
       "hierarchy_dims" : [
         [ "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "SUPPLIER.S_CITY" ],
         [ "CUSTOMER.C_REGION", "CUSTOMER.C_NATION", "CUSTOMER.C_CITY" ],
-        [ "DATES.D_YEAR", "DATES.D_YEARMONTH", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR" ],
-        [ "PART.P_MFGR", "PART.P_CATEGORY", "PART.P_BRAND" ]
+        [ "PART.P_MFGR", "PART.P_CATEGORY", "PART.P_BRAND" ],
+        [ "DATES.D_YEAR", "DATES.D_YEARMONTH" ]
+      ],
+      "mandatory_dims" : [ ],
+      "joint_dims" : [ ]
+    }
+  }, {
+    "includes" : [ "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR", "DATES.D_YEAR" ],
+    "select_rule" : {
+      "hierarchy_dims" : [
+        [ "DATES.D_YEAR", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR" ]
       ],
       "mandatory_dims" : [ ],
       "joint_dims" : [
