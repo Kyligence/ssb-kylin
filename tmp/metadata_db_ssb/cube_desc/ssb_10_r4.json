@@ -216,9 +216,10 @@
       "hierarchy_dims" : [
         [ "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "SUPPLIER.S_CITY" ],
         [ "CUSTOMER.C_REGION", "CUSTOMER.C_NATION", "CUSTOMER.C_CITY" ],
+        [ "DATES.D_YEAR", "DATES.D_YEARMONTH", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR" ],
         [ "PART.P_MFGR", "PART.P_CATEGORY", "PART.P_BRAND" ]
       ],
-      "mandatory_dims" : [ "DATES.D_YEAR", "DATES.D_YEARMONTH", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR" ],
+      "mandatory_dims" : [ ],
       "joint_dims" : [
         [ "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT" ]
       ]
