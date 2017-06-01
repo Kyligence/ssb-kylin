@@ -1,6 +1,6 @@
 {
-  "uuid" : "751611e3-c8cc-4601-8cd3-c7a61caebe83",
-  "last_modified" : 1495013472823,
+  "uuid" : "070dcb76-af03-4444-a3c7-13bff0febad2",
+  "last_modified" : 1496286556171,
   "version" : "1.5.3",
   "name" : "ssb_10_r4",
   "model_name" : "ssb_10",
@@ -211,91 +211,20 @@
     } ]
   },
   "aggregation_groups" : [ {
-    "includes" : [ "DATES.D_WEEKNUMINYEAR", "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT", "DATES.D_YEAR" ],
+    "includes" : [ "CUSTOMER.C_CITY", "CUSTOMER.C_NATION", "CUSTOMER.C_REGION", "SUPPLIER.S_CITY", "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "DATES.D_YEARMONTHNUM", "DATES.D_YEARMONTH", "DATES.D_WEEKNUMINYEAR", "DATES.D_YEAR", "PART.P_BRAND", "PART.P_CATEGORY", "PART.P_MFGR", "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT" ],
     "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "DATES.D_WEEKNUMINYEAR", "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "PART.P_BRAND", "SUPPLIER.S_REGION", "DATES.D_YEAR" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "PART.P_BRAND", "SUPPLIER.S_REGION", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "SUPPLIER.S_CITY", "PART.P_BRAND", "PART.P_CATEGORY", "SUPPLIER.S_NATION", "CUSTOMER.C_REGION", "DATES.D_YEAR" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "SUPPLIER.S_CITY", "PART.P_BRAND", "PART.P_CATEGORY", "SUPPLIER.S_NATION", "CUSTOMER.C_REGION", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT", "DATES.D_YEARMONTHNUM" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT", "DATES.D_YEARMONTHNUM" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "PART.P_MFGR", "SUPPLIER.S_REGION", "CUSTOMER.C_NATION", "CUSTOMER.C_REGION", "DATES.D_YEAR" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "PART.P_MFGR", "SUPPLIER.S_REGION", "CUSTOMER.C_NATION", "CUSTOMER.C_REGION", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "SUPPLIER.S_CITY", "CUSTOMER.C_CITY", "DATES.D_YEAR" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "SUPPLIER.S_CITY", "CUSTOMER.C_CITY", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "SUPPLIER.S_CITY", "CUSTOMER.C_CITY", "DATES.D_YEAR", "DATES.D_YEARMONTH" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "SUPPLIER.S_CITY", "CUSTOMER.C_CITY", "DATES.D_YEAR", "DATES.D_YEARMONTH" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "SUPPLIER.S_CITY", "CUSTOMER.C_CITY", "CUSTOMER.C_NATION", "SUPPLIER.S_NATION", "DATES.D_YEAR" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "SUPPLIER.S_CITY", "CUSTOMER.C_CITY", "CUSTOMER.C_NATION", "SUPPLIER.S_NATION", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT", "DATES.D_YEAR" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "PART.P_MFGR", "SUPPLIER.S_REGION", "PART.P_CATEGORY", "SUPPLIER.S_NATION", "CUSTOMER.C_REGION", "DATES.D_YEAR" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "PART.P_MFGR", "SUPPLIER.S_REGION", "PART.P_CATEGORY", "SUPPLIER.S_NATION", "CUSTOMER.C_REGION", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "SUPPLIER.S_REGION", "CUSTOMER.C_NATION", "SUPPLIER.S_NATION", "CUSTOMER.C_REGION", "DATES.D_YEAR" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "SUPPLIER.S_REGION", "CUSTOMER.C_NATION", "SUPPLIER.S_NATION", "CUSTOMER.C_REGION", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
-    }
-  }, {
-    "includes" : [ "PART.P_BRAND", "SUPPLIER.S_REGION", "PART.P_CATEGORY", "DATES.D_YEAR" ],
-    "select_rule" : {
-      "hierarchy_dims" : [ ],
-      "mandatory_dims" : [ "PART.P_BRAND", "SUPPLIER.S_REGION", "PART.P_CATEGORY", "DATES.D_YEAR" ],
-      "joint_dims" : [ ]
+      "hierarchy_dims" : [
+        [ "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "SUPPLIER.S_CITY" ],
+        [ "CUSTOMER.C_REGION", "CUSTOMER.C_NATION", "CUSTOMER.C_CITY" ],
+        [ "PART.P_MFGR", "PART.P_CATEGORY", "PART.P_BRAND" ]
+      ],
+      "mandatory_dims" : [ "DATES.D_YEAR", "DATES.D_YEARMONTH", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR" ],
+      "joint_dims" : [
+        [ "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT" ]
+      ]
     }
   } ],
-  "signature" : "k9wkI+mPyuZXNpFBswYYzg==",
+  "signature" : "MEgNo0OfCN+8HwXCf+UtJg==",
   "notify_list" : null,
   "status_need_notify" : [ ],
   "partition_date_start" : 0,
