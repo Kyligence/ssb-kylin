@@ -89,7 +89,7 @@ You could find new project `ssb`. Select the project `ssb`, click *Disable* and 
 
 ## 4. Query
 
-Here is a list SSB queries, the query parameter may be different between different *scale factor*. The sample data is generated randomly. 
+Here is a list of SSB queries, the query parameter may be different between different *scale factor*. The sample data is generated randomly. 
 
 *Notice that the queries may be slightly different for different scale factor in the filtering constants. The queries below are tested with scale factor 10.*
 
