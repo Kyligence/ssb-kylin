@@ -7,31 +7,6 @@
   "description" : "",
   "null_string" : null,
   "dimensions" : [ {
-    "name" : "SSB.PART_DERIVED",
-    "table" : "PART",
-    "column" : "P_MFGR",
-    "derived" : null
-  }, {
-    "name" : "SSB.PART_DERIVED",
-    "table" : "PART",
-    "column" : "P_CATEGORY",
-    "derived" : null
-  }, {
-    "name" : "SSB.PART_DERIVED",
-    "table" : "PART",
-    "column" : "P_BRAND",
-    "derived" : null
-  }, {
-    "name" : "C_CITY",
-    "table" : "CUSTOMER",
-    "column" : "C_CITY",
-    "derived" : null
-  }, {
-    "name" : "C_REGION",
-    "table" : "CUSTOMER",
-    "column" : "C_REGION",
-    "derived" : null
-  }, {
     "name" : "C_NATION",
     "table" : "CUSTOMER",
     "column" : "C_NATION",
@@ -40,6 +15,16 @@
     "name" : "S_CITY",
     "table" : "SUPPLIER",
     "column" : "S_CITY",
+    "derived" : null
+  }, {
+    "name" : "P_CATEGORY",
+    "table" : "PART",
+    "column" : "P_CATEGORY",
+    "derived" : null
+  }, {
+    "name" : "D_YEAR",
+    "table" : "DATES",
+    "column" : "D_YEAR",
     "derived" : null
   }, {
     "name" : "S_REGION",
@@ -52,14 +37,14 @@
     "column" : "S_NATION",
     "derived" : null
   }, {
-    "name" : "D_YEAR",
+    "name" : "D_WEEKNUMINYEAR",
     "table" : "DATES",
-    "column" : "D_YEAR",
+    "column" : "D_WEEKNUMINYEAR",
     "derived" : null
   }, {
-    "name" : "D_YEARMONTH",
-    "table" : "DATES",
-    "column" : "D_YEARMONTH",
+    "name" : "LO_QUANTITY",
+    "table" : "P_LINEORDER",
+    "column" : "LO_QUANTITY",
     "derived" : null
   }, {
     "name" : "D_YEARMONTHNUM",
@@ -67,9 +52,34 @@
     "column" : "D_YEARMONTHNUM",
     "derived" : null
   }, {
-    "name" : "D_WEEKNUMINYEAR",
+    "name" : "LO_DISCOUNT",
+    "table" : "P_LINEORDER",
+    "column" : "LO_DISCOUNT",
+    "derived" : null
+  }, {
+    "name" : "P_BRAND",
+    "table" : "PART",
+    "column" : "P_BRAND",
+    "derived" : null
+  }, {
+    "name" : "C_REGION",
+    "table" : "CUSTOMER",
+    "column" : "C_REGION",
+    "derived" : null
+  }, {
+    "name" : "D_YEARMONTH",
     "table" : "DATES",
-    "column" : "D_WEEKNUMINYEAR",
+    "column" : "D_YEARMONTH",
+    "derived" : null
+  }, {
+    "name" : "C_CITY",
+    "table" : "CUSTOMER",
+    "column" : "C_CITY",
+    "derived" : null
+  }, {
+    "name" : "P_MFGR",
+    "table" : "PART",
+    "column" : "P_MFGR",
     "derived" : null
   } ],
   "measures" : [ {
@@ -83,17 +93,17 @@
       "returntype" : "bigint"
     }
   }, {
-    "name" : "TOTAL_REVENUE",
+    "name" : "P_LINEORDER.V_REVENUE_SUM",
     "function" : {
       "expression" : "SUM",
       "parameter" : {
         "type" : "column",
-        "value" : "P_LINEORDER.LO_REVENUE"
+        "value" : "P_LINEORDER.V_REVENUE"
       },
       "returntype" : "bigint"
     }
   }, {
-    "name" : "TOTAL_SUPPLYCOST",
+    "name" : "P_LINEORDER.LO_SUPPLYCOST_SUM",
     "function" : {
       "expression" : "SUM",
       "parameter" : {
@@ -103,18 +113,78 @@
       "returntype" : "bigint"
     }
   }, {
-    "name" : "TOTAL_V_REVENUE",
+    "name" : "P_LINEORDER.LO_REVENUE_SUM",
     "function" : {
       "expression" : "SUM",
       "parameter" : {
         "type" : "column",
-        "value" : "P_LINEORDER.V_REVENUE"
+        "value" : "P_LINEORDER.LO_REVENUE"
       },
       "returntype" : "bigint"
     }
   } ],
   "rowkey" : {
     "rowkey_columns" : [ {
+      "column" : "CUSTOMER.C_CITY",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "SUPPLIER.S_CITY",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "PART.P_BRAND",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "DATES.D_YEARMONTHNUM",
+      "encoding" : "integer:4",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "DATES.D_YEARMONTH",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "PART.P_CATEGORY",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "DATES.D_WEEKNUMINYEAR",
+      "encoding" : "integer:4",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "P_LINEORDER.LO_QUANTITY",
+      "encoding" : "integer:8",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "SUPPLIER.S_NATION",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "P_LINEORDER.LO_DISCOUNT",
+      "encoding" : "integer:8",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "PART.P_MFGR",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
+      "column" : "CUSTOMER.C_NATION",
+      "encoding" : "dict",
+      "isShardBy" : false,
+      "index" : "eq"
+    }, {
       "column" : "CUSTOMER.C_REGION",
       "encoding" : "dict",
       "isShardBy" : false,
@@ -125,57 +195,8 @@
       "isShardBy" : false,
       "index" : "eq"
     }, {
-      "column" : "PART.P_MFGR",
-      "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
-    }, {
       "column" : "DATES.D_YEAR",
-      "encoding" : "dict",
-      "isShardBy" : false
-    }, {
-      "column" : "CUSTOMER.C_NATION",
-      "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
-    }, {
-      "column" : "SUPPLIER.S_NATION",
-      "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
-    }, {
-      "column" : "DATES.D_WEEKNUMINYEAR",
-      "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
-    }, {
-      "column" : "DATES.D_YEARMONTH",
-      "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
-    }, {
-      "column" : "DATES.D_YEARMONTHNUM",
-      "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
-    }, {
-      "column" : "PART.P_CATEGORY",
-      "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
-    }, {
-      "column" : "SUPPLIER.S_CITY",
-      "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
-    }, {
-      "column" : "CUSTOMER.C_CITY",
-      "encoding" : "dict",
-      "isShardBy" : false,
-      "index" : "eq"
-    }, {
-      "column" : "PART.P_BRAND",
-      "encoding" : "dict",
+      "encoding" : "integer:4",
       "isShardBy" : false,
       "index" : "eq"
     } ]
@@ -185,25 +206,44 @@
       "name" : "F1",
       "columns" : [ {
         "qualifier" : "M",
-        "measure_refs" : [ "_COUNT_", "TOTAL_REVENUE", "TOTAL_SUPPLYCOST", "TOTAL_V_REVENUE" ]
+        "measure_refs" : [ "_COUNT_", "P_LINEORDER.V_REVENUE_SUM", "P_LINEORDER.LO_SUPPLYCOST_SUM", "P_LINEORDER.LO_REVENUE_SUM" ]
       } ]
     } ]
   },
   "aggregation_groups" : [ {
-    "includes" : [ "CUSTOMER.C_CITY", "CUSTOMER.C_REGION", "CUSTOMER.C_NATION", "SUPPLIER.S_CITY", "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "DATES.D_YEAR", "DATES.D_YEARMONTH", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR", "PART.P_MFGR", "PART.P_CATEGORY", "PART.P_BRAND" ],
+    "includes" : [ "CUSTOMER.C_CITY", "CUSTOMER.C_NATION", "CUSTOMER.C_REGION", "SUPPLIER.S_CITY", "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "DATES.D_YEARMONTH", "DATES.D_YEAR", "PART.P_BRAND", "PART.P_CATEGORY", "PART.P_MFGR" ],
     "select_rule" : {
-      "hierarchy_dims" : [ [ "CUSTOMER.C_REGION", "CUSTOMER.C_NATION", "CUSTOMER.C_CITY" ], [ "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "SUPPLIER.S_CITY" ], [ "DATES.D_YEAR", "DATES.D_YEARMONTH", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR" ], [ "PART.P_MFGR", "PART.P_CATEGORY", "PART.P_BRAND" ] ],
+      "hierarchy_dims" : [
+        [ "SUPPLIER.S_REGION", "SUPPLIER.S_NATION", "SUPPLIER.S_CITY" ],
+        [ "CUSTOMER.C_REGION", "CUSTOMER.C_NATION", "CUSTOMER.C_CITY" ],
+        [ "PART.P_MFGR", "PART.P_CATEGORY", "PART.P_BRAND" ],
+        [ "DATES.D_YEAR", "DATES.D_YEARMONTH" ]
+      ],
       "mandatory_dims" : [ ],
       "joint_dims" : [ ]
+    }
+  }, {
+    "includes" : [ "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR", "DATES.D_YEAR" ],
+    "select_rule" : {
+      "hierarchy_dims" : [
+        [ "DATES.D_YEAR", "DATES.D_YEARMONTHNUM", "DATES.D_WEEKNUMINYEAR" ]
+      ],
+      "mandatory_dims" : [ ],
+      "joint_dims" : [
+        [ "P_LINEORDER.LO_QUANTITY", "P_LINEORDER.LO_DISCOUNT" ]
+      ]
     }
   } ],
   "notify_list" : [ ],
   "status_need_notify" : [ ],
   "partition_date_start" : 694224000000,
   "partition_date_end" : 3153600000000,
-  "auto_merge_time_ranges" : [ 604800000, 2419200000 ],
+  "auto_merge_time_ranges" : [ ],
   "retention_range" : 0,
   "engine_type" : 2,
   "storage_type" : 2,
-  "override_kylin_properties" : { }
+  "override_kylin_properties" : {
+    "kylin.cube.aggrgroup.is-mandatory-only-valid" : "true",
+    "kylin.storage.hbase.min-region-count" : "4"
+  }
 }

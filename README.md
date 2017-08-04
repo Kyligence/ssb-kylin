@@ -71,26 +71,25 @@ The data generation executes in YARN, please increase YARN container memory if y
    show tables;
    select count(*) from p_lineorder;
    ```
+   Six Hive external tables are created: *customer*, *dates*, *part*, *supplier* and *lineorder*. The sixth table is *p_lineorder* which is the partitioned table for *lineorder*. 
+
 ## 3. Load & Build Cube
 
-The Kylin project, model and cube has been designed in advance, you could import it into Kylin directly. The *Cube Metadata* locates under cubemeta directory.
+The Kylin project, model and cube has been designed in advance, you could import it into Kylin directly. The *Cube Metadata* locates under `cubemeta` directory.
 
-Run the following commands to import the cubemeta definition:
+Run the following commands to import the `cubemeta` definition:
 
 ```shell
-cd $KYLIN_HOME
-bin/metastore.sh restore <path to cubemeta dir>
+$KYLIN_HOME/bin/metastore.sh restore cubemeta
 ```
 
 Restart Kylin or click ``Reload Metadata``. 
 
-You could find new project *ssb*. Select the *ssb*, click *Disable* and *Purge* on the *ssb* cube at *Model* Tab to remove all old tempory files. And click *Build* next. The cube build will be finished in a few minutes.
+You could find new project `ssb`. Select the project `ssb`, click *Disable* and *Purge* on the *ssb* cube at *Model* Tab to remove all old tempory files. And click *Build* next. The cube build will be finished in a few minutes.
 
 ## 4. Query
 
-Six Hive external tables are created: *customer*, *dates*, *part*, *supplier* and *lineorder*. The sixth table is *p_lineorder* which is the partitioned table for *lineorder*. 
-
-Here is a list sample queries, the query parameter may be different between different *scale factor*. The sample data is generated randomly. 
+Here is a list SSB queries, the query parameter may be different between different *scale factor*. The sample data is generated randomly. 
 
 *Notice that the queries may be slightly different for different scale factor in the filtering constants. The queries below are tested with scale factor 10.*
 
