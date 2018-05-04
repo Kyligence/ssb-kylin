@@ -1,0 +1,77 @@
+{
+  "uuid" : "285d5ba1-10ca-4dc0-bd23-f10979ea1a19",
+  "last_modified" : 1525327692295,
+  "version" : "2.3.0.20505",
+  "name" : "mm",
+  "owner" : "ADMIN",
+  "is_draft" : false,
+  "description" : "",
+  "fact_table" : "SSB.P_LINEORDER",
+  "lookups" : [ {
+    "table" : "SSB.DATES",
+    "kind" : "LOOKUP",
+    "alias" : "DATES",
+    "join" : {
+      "type" : "left",
+      "primary_key" : [ "DATES.D_DATEKEY" ],
+      "foreign_key" : [ "P_LINEORDER.LO_ORDERDATE" ]
+    }
+  }, {
+    "table" : "SSB.CUSTOMER",
+    "kind" : "FACT",
+    "alias" : "CUSTOMER",
+    "join" : {
+      "type" : "left",
+      "primary_key" : [ "CUSTOMER.C_CUSTKEY" ],
+      "foreign_key" : [ "P_LINEORDER.LO_CUSTKEY" ]
+    }
+  }, {
+    "table" : "SSB.SUPPLIER",
+    "kind" : "LOOKUP",
+    "alias" : "SUPPLIER",
+    "join" : {
+      "type" : "left",
+      "primary_key" : [ "SUPPLIER.S_SUPPKEY" ],
+      "foreign_key" : [ "P_LINEORDER.LO_SUPPKEY" ]
+    }
+  }, {
+    "table" : "SSB.PART",
+    "kind" : "LOOKUP",
+    "alias" : "PART",
+    "join" : {
+      "type" : "left",
+      "primary_key" : [ "PART.P_PARTKEY" ],
+      "foreign_key" : [ "P_LINEORDER.LO_PARTKEY" ]
+    }
+  } ],
+  "dimensions" : [ {
+    "table" : "DATES",
+    "columns" : [ "D_DATEKEY", "D_YEAR", "D_YEARMONTHNUM", "D_YEARMONTH", "D_WEEKNUMINYEAR" ]
+  }, {
+    "table" : "CUSTOMER",
+    "columns" : [ "C_CUSTKEY", "C_CITY", "C_NATION", "C_REGION" ]
+  }, {
+    "table" : "SUPPLIER",
+    "columns" : [ "S_SUPPKEY", "S_CITY", "S_NATION", "S_REGION" ]
+  }, {
+    "table" : "PART",
+    "columns" : [ "P_PARTKEY", "P_MFGR", "P_CATEGORY", "P_BRAND" ]
+  }, {
+    "table" : "P_LINEORDER",
+    "columns" : [ "LO_CUSTKEY", "LO_PARTKEY", "LO_SUPPKEY", "LO_ORDERDATE", "LO_QUANTITY", "LO_DISCOUNT" ]
+  } ],
+  "metrics" : [ "P_LINEORDER.LO_REVENUE", "P_LINEORDER.LO_SUPPLYCOST", "P_LINEORDER.V_REVENUE" ],
+  "filter_condition" : "",
+  "partition_desc" : {
+    "partition_date_column" : "P_LINEORDER.LO_ORDERDATE",
+    "partition_time_column" : null,
+    "partition_date_start" : 0,
+    "partition_date_format" : "yyyyMMdd",
+    "partition_time_format" : "HH:mm:ss",
+    "partition_type" : "APPEND",
+    "partition_condition_builder" : "org.apache.kylin.metadata.model.PartitionDesc$DefaultPartitionConditionBuilder"
+  },
+  "capacity" : "MEDIUM",
+  "multilevel_partition_cols" : [ ],
+  "computed_columns" : [ ]
+}

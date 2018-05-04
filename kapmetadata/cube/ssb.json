@@ -1,0 +1,15 @@
+{
+  "uuid" : "4ba43494-1cc7-455e-8679-b7bfdf579ed8",
+  "last_modified" : 1525420338822,
+  "version" : "2.3.0.20505",
+  "name" : "ssb",
+  "owner" : "ADMIN",
+  "descriptor" : "ssb",
+  "display_name" : "ssb",
+  "cost" : 50,
+  "status" : "DISABLED",
+  "create_time_utc" : 1525319852381,
+  "cuboid_bytes" : null,
+  "cuboid_bytes_recommend" : null,
+  "cuboid_last_optimized" : 0
+}

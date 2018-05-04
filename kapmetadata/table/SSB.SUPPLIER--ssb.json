@@ -1,0 +1,38 @@
+{
+  "uuid" : "ac66c9a8-53a6-44ed-8a6d-62459f4e1226",
+  "last_modified" : 1525319590650,
+  "version" : "2.3.0.20505",
+  "name" : "SUPPLIER",
+  "columns" : [ {
+    "id" : "1",
+    "name" : "S_SUPPKEY",
+    "datatype" : "integer"
+  }, {
+    "id" : "2",
+    "name" : "S_NAME",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "3",
+    "name" : "S_ADDRESS",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "4",
+    "name" : "S_CITY",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "5",
+    "name" : "S_NATION",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "6",
+    "name" : "S_REGION",
+    "datatype" : "varchar(256)"
+  }, {
+    "id" : "7",
+    "name" : "S_PHONE",
+    "datatype" : "varchar(256)"
+  } ],
+  "source_type" : 0,
+  "table_type" : "EXTERNAL_TABLE",
+  "database" : "SSB"
+}

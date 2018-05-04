@@ -1,0 +1,41 @@
+{
+  "uuid" : "afacd04e-e44e-475c-82b5-1a5207964e84",
+  "last_modified" : 1525327637289,
+  "version" : "2.3.0.20505",
+  "name" : "bb",
+  "owner" : "ADMIN",
+  "is_draft" : false,
+  "description" : "",
+  "fact_table" : "SSB.P_LINEORDER",
+  "lookups" : [ {
+    "table" : "SSB.CUSTOMER",
+    "kind" : "FACT",
+    "alias" : "CUSTOMER",
+    "join" : {
+      "type" : "left",
+      "primary_key" : [ "CUSTOMER.C_CUSTKEY" ],
+      "foreign_key" : [ "P_LINEORDER.LO_CUSTKEY" ]
+    }
+  } ],
+  "dimensions" : [ {
+    "table" : "P_LINEORDER",
+    "columns" : [ "LO_CUSTKEY" ]
+  }, {
+    "table" : "CUSTOMER",
+    "columns" : [ "C_CUSTKEY" ]
+  } ],
+  "metrics" : [ ],
+  "filter_condition" : "",
+  "partition_desc" : {
+    "partition_date_column" : null,
+    "partition_time_column" : null,
+    "partition_date_start" : 0,
+    "partition_date_format" : "",
+    "partition_time_format" : "",
+    "partition_type" : "APPEND",
+    "partition_condition_builder" : "org.apache.kylin.metadata.model.PartitionDesc$DefaultPartitionConditionBuilder"
+  },
+  "capacity" : "MEDIUM",
+  "multilevel_partition_cols" : [ ],
+  "computed_columns" : [ ]
+}
