@@ -13,7 +13,7 @@
     "type" : "CUBE",
     "realization" : "ssb"
   } ],
-  "models" : [ "mm", "bb" ],
+  "models" : [ "mm" ],
   "ext_filters" : [ ],
   "override_kylin_properties" : {
     "kylin.query.force-limit" : "-1"
