@@ -47,7 +47,7 @@ The data generation executes in YARN, please increase YARN container memory if y
 2. Define the environment variable `HADOOP_STREAMING_JAR`. If you could not found this jar in your environment. You can use the jar in `ssb-kylin/lib/hadoop-streaming.jar`.
 
    ```shell
-   export HADOOP_STREAMING_JAR=/usr/hdp/<version>/hadoop-mapreduce/hadoop-streaming.jar
+   export HADOOP_STREAMING_JAR=/usr/hdp/<version>/hadoop-mapreduce-client/hadoop-streaming.jar
    ```
 
 3. Generate Data and Import into Hive
