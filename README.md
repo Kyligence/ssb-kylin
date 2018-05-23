@@ -52,6 +52,14 @@ The data generation executes in YARN, please increase YARN container memory if y
 
 3. Generate Data and Import into Hive
 
+   Make sure `/user/root` has permission
+
+   ``` shell
+   hdfs dfs -chmod -R 777 /user/root
+   ```
+   
+   Generate the data and load into Hive tables.
+   
    ```shell
    cd ..
    bin/run.sh
