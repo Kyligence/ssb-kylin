@@ -324,7 +324,7 @@
   "volatile_range" : 0,
   "retention_range" : 0,
   "engine_type" : 100,
-  "storage_type" : 99,
+  "storage_type" : 100,
   "override_kylin_properties" : {
     "kap.smart.conf.aggGroup.strategy" : "auto"
   },
