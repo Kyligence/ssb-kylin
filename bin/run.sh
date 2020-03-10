@@ -46,6 +46,16 @@ do
     shift
 done
 
+scale2int=$scale
+if ! [[ "$scale" =~ ^[0-9]+$ ]]; then
+    scale2int=`echo $scale |awk '{ print int($0)+1}'`
+fi
+
+if [ ${scale2int} -gt 1000 ]; then
+    echo 'Scale factor > 1000 since implementation is incomplete.'
+    exit
+fi
+
 # check for existence of hadoop streaming
 if [ -n "$HADOOP_HOME" ]; then
     # for hadoop 1.0.x

@@ -16,7 +16,7 @@ Before we start, you could adjust parameters to customize the SSB data set that 
 
 We extended [the original SSB-DBGen](https://github.com/electrum/ssb-dbgen) tools to support column cardinality configuration.
 
-**SCALE** is the key scale factor，ranging from 0.01 to 100+. Default value is 0.1.
+**SCALE** is the key scale factor，ranging from 0.01 to 100+. Default value is 0.1. Until now, the max scale factor supported is 1000.
 
 Other properties in `bin/ssb.conf`:
 
