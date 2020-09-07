@@ -98,7 +98,7 @@ if [[ "$?" -ne 0 ]]
    echo "dists.dss is expected, please make sure dists.dss has been made"
 fi
 
-for ((task=0; task <= ${PARALLEL_TASKS}; task++))
+for ((task=0; task < ${PARALLEL_TASKS}; task++))
 do
     if [ ${task} == 0 ];then
         for tbl in customer part supplier date

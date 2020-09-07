@@ -57,9 +57,9 @@ The data generation executes in YARN, please increase YARN container memory if y
    ``` shell
    hdfs dfs -chmod -R 777 /user/root
    ```
-   
+
    Generate the data and load into Hive tables.
-   
+
    ```shell
    cd ..
    bin/run.sh
@@ -79,7 +79,19 @@ The data generation executes in YARN, please increase YARN container memory if y
    show tables;
    select count(*) from p_lineorder;
    ```
-   Six Hive external tables are created: *customer*, *dates*, *part*, *supplier* and *lineorder*. The sixth table is *p_lineorder* which is the partitioned table for *lineorder*. 
+   Six Hive external tables are created: *customer*, *dates*, *part*, *supplier* and *lineorder*. The sixth table is *p_lineorder* which is the partitioned table for *lineorder*.
+
+5. Generate ssb data locally
+
+   ```shell
+   # git clone this repo
+   # git checkout local_generator
+   cd ssb-benchmark
+   make clean
+   make
+   cd bin
+   ./run.sh --scale 10
+   ```
 
 ## 3. Load & Build Cube
 
