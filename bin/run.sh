@@ -100,6 +100,7 @@ fi
 
 for ((task=0; task < ${PARALLEL_TASKS}; task++))
 do
+{
     if [ ${task} == 0 ];then
         for tbl in customer part supplier date
         do
@@ -124,10 +125,11 @@ do
             #echo "./dbgen -C $((PARALLEL_TASKS-1)) -S $((TASK_NUM-1)) -s ${SCALE} -T ${tbl}"
             ${dir}/dbgen -q -c ./ssb.conf -C $((PARALLEL_TASKS-1)) -S $((task)) -s ${scale} -T ${tbl}
             #echo "Finish generating and start to upload - ${tbl}"
-            hadoop fs -put ${tbl}.tbl* ${HDFS_BASE_DIR}/data/$tbl/
-            rm -f ${tbl}.tbl* || exit 0
+            hadoop fs -put ${tbl}.tbl.${task} ${HDFS_BASE_DIR}/data/$tbl/
+            rm -f ${tbl}.tbl.${task} || exit 0
             #echo "Upload finished - $tbl"
         done
     fi
+}&
 done
 
