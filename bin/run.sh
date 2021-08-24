@@ -10,6 +10,7 @@ PARALLEL_TASKS=10
 partition=false
 database=SSB
 scale=0.1
+data_exist=false
 
 while [[ $# -ge 1 ]]
 do
@@ -39,6 +40,11 @@ do
             echo "parallel changed to ${PARALLEL_TASKS}"
             shift
             ;;
+        --data-exist)
+           data_exist=true
+           echo "ssb data already exists, skip generate data."
+           shift
+           ;;
         *)
             ;;
 
@@ -54,6 +60,30 @@ fi
 if [ ${scale2int} -gt 1000 ]; then
     echo 'Scale factor > 1000 since implementation is incomplete.'
     exit
+fi
+
+if [ "${data_exist}" == "true" ]; then
+  hadoop fs -ls $HDFS_BASE_DIR/data
+  if [ $? -ne 0 ]; then
+    echo "${HDFS_BASE_DIR}/data does not exist, please set the correct hdfs base directory of ssb data."
+    exit
+  else
+    echo "Skip generate data, creating Hive External Tables..."
+    ls $dir/../hive/* | xargs -I {} cp {} {}.tmp
+    sed -i -e "s/<DATABASE>/${database}/g" $dir/../hive/*.tmp
+    sed -i -e "s|<hdfs-dir>|${HDFS_BASE_DIR}|g" $dir/../hive/*.tmp
+    hive -f $dir/../hive/1_create_basic.sql.tmp
+    if [ "${partition}" == "true" ]
+    then
+        echo "Creating Hive Partitioned Table, may cost some time..."
+        hive -f $dir/../hive/2_create_partitions.sql.tmp
+    else
+        echo "Creating Hive View"
+        hive -f $dir/../hive/2_create_views.sql.tmp
+    fi
+    rm $dir/../hive/*.tmp
+    exit
+  fi
 fi
 
 # check for existence of hadoop streaming
