@@ -1,0 +1,13 @@
+aws emr create-cluster --applications Name=Hadoop Name=Hive Name=Pig Name=Spark Name=Sqoop Name=Tez  Name=ZooKeeper Name=Ganglia \
+--tags 'Cost Center=OS' 'Project=kylin4 benchmark' 'CRR=${CRRXXXX}' 'Owner=${owner}' --ec2-attributes '{"KeyName":"${key-name}","AdditionalSlaveSecurityGroups":["sg-xxxx"],"InstanceProfile":"EMR_EC2_DefaultRole","SubnetId":"subnet-xxxx","EmrManagedSlaveSecurityGroup":"sg-xxxx","EmrManagedMasterSecurityGroup":"sg-xxxx","AdditionalMasterSecurityGroups":["sg-xxxx"]}' \
+--release-label emr-5.31.0 \
+--log-uri 's3n://aws-logs-472319870699-cn-northwest-1/elasticmapreduce/' \
+--instance-groups '[{"InstanceCount":4,"EbsConfiguration":{"EbsBlockDeviceConfigs":[{"VolumeSpecification":{"SizeInGB":700,"VolumeType":"gp2"},"VolumesPerInstance":1}]},"InstanceGroupType":"CORE","InstanceType":"m5.4xlarge","Name":"Hadoop Workers"},{"InstanceCount":1,"InstanceGroupType":"MASTER","InstanceType":"m5.4xlarge","Name":"Hadoop Master"}]' \
+--configurations '[{"Classification":"hdfs-site","Properties":{"dfs.replication":"1"}},{"Classification":"mapred-site","Properties":{"mapreduce.map.memory.mb":"3072","mapreduce.reduce.memory.mb":"12288","mapreduce.map.java.opts":
+"-Xmx4072m","mapreduce.reduce.java.opts":"-Xmx7144m"}},{"Classification":"yarn-site","Properties":{"yarn.nodemanager.resource.cpu-vcores":"11","yarn.nodemanager.resource.memory-mb":"43008","yarn.scheduler.maximum-allocation-mb":"43008","yarn.app.mapreduce.am.resource.mb":"2048"}}]' \
+--auto-scaling-role EMR_AutoScaling_DefaultRole \
+--ebs-root-volume-size 100 \
+--service-role EMR_DefaultRole \
+--enable-debugging --name 'Kylin4 benchmark' \
+--scale-down-behavior TERMINATE_AT_TASK_COMPLETION \
+--region cn-northwest-1

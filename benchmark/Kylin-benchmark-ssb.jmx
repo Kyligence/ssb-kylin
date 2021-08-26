@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Kylin-benchmark-ssb" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="用户定义的变量" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="Kylin JDBC Connection Configuration" enabled="true">
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="checkQuery">select 1</stringProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="dataSource">kylin-jdbc</stringProp>
+        <stringProp name="dbUrl">jdbc:kylin://${host}:${port}/project_name</stringProp>
+        <stringProp name="driver">org.apache.kylin.jdbc.Driver</stringProp>
+        <stringProp name="initQuery">select 1</stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="password">KYLIN</stringProp>
+        <stringProp name="poolMax">500</stringProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <stringProp name="username">ADMIN</stringProp>
+        <boolProp name="preinit">false</boolProp>
+        <stringProp name="connectionProperties"></stringProp>
+      </JDBCDataSource>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="察看结果树" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">/Users/yaqian.zhang/Documents/work/benchmark/NewFolder/result_查看结果树.csv</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="汇总报告" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">/Users/yaqian.zhang/Documents/work/benchmark/NewFolder/result_1</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="StatGraphVisualizer" testclass="ResultCollector" testname="汇总图" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">/Users/yaqian.zhang/Documents/work/benchmark/NewFolder/result_1.csv</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="图形结果" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="响应时间图" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+        <stringProp name="RespTimeGraph.xaxistimeformat">HH</stringProp>
+        <stringProp name="RespTimeGraph.interval">100000</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="ssb query Q1.1~Q4.3" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">3</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.duration">1200</stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q1.1" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select sum(v_revenue) as revenue
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+where d_year = 1993
+and lo_discount between 1 and 3
+and lo_quantity &lt; 25;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q1.2" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select sum(v_revenue) as revenue
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+where d_yearmonthnum = 199401
+and lo_discount between 4 and 6
+and lo_quantity between 26 and 35;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q1.3" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select sum(v_revenue) as revenue
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+where d_weeknuminyear = 6 and d_year = 1994
+and lo_discount between 5 and 7
+and lo_quantity between 26 and 35;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q2.1" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select sum(lo_revenue) as lo_revenue, d_year, p_brand
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join part on lo_partkey = p_partkey
+left join supplier on lo_suppkey = s_suppkey
+where p_category = &apos;MFGR#12&apos; and s_region = &apos;AMERICA&apos;
+group by d_year, p_brand
+order by d_year, p_brand;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q2.2" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select sum(lo_revenue) as lo_revenue, d_year, p_brand
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join part on lo_partkey = p_partkey
+left join supplier on lo_suppkey = s_suppkey
+where p_brand between &apos;MFGR#2221&apos; and &apos;MFGR#2228&apos; and s_region = &apos;ASIA&apos;
+group by d_year, p_brand
+order by d_year, p_brand;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q2.3" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select sum(lo_revenue) as lo_revenue, d_year, p_brand
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join part on lo_partkey = p_partkey
+left join supplier on lo_suppkey = s_suppkey
+where p_brand = &apos;MFGR#2239&apos; and s_region = &apos;EUROPE&apos;
+group by d_year, p_brand
+order by d_year, p_brand;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q3.1" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select c_nation, s_nation, d_year, sum(lo_revenue) as lo_revenue
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join customer on lo_custkey = c_custkey
+left join supplier on lo_suppkey = s_suppkey
+where c_region = &apos;ASIA&apos; and s_region = &apos;ASIA&apos;and d_year &gt;= 1992 and d_year &lt;= 1997
+group by c_nation, s_nation, d_year
+order by d_year asc, lo_revenue desc;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q3.2" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select c_city, s_city, d_year, sum(lo_revenue) as lo_revenue
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join customer on lo_custkey = c_custkey
+left join supplier on lo_suppkey = s_suppkey
+where c_nation = &apos;UNITED STATES&apos; and s_nation = &apos;UNITED STATES&apos;
+and d_year &gt;= 1992 and d_year &lt;= 1997
+group by c_city, s_city, d_year
+order by d_year asc, lo_revenue desc;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q3.3" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select c_city, s_city, d_year, sum(lo_revenue) as lo_revenue
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join customer on lo_custkey = c_custkey
+left join supplier on lo_suppkey = s_suppkey
+where (c_city=&apos;UNITED KI1&apos; or c_city=&apos;UNITED KI5&apos;)
+and (s_city=&apos;UNITED KI1&apos; or s_city=&apos;UNITED KI5&apos;)
+and d_year &gt;= 1992 and d_year &lt;= 1997
+group by c_city, s_city, d_year
+order by d_year asc, lo_revenue desc;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q3.4" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select c_city, s_city, d_year, sum(lo_revenue) as lo_revenue
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join customer on lo_custkey = c_custkey
+left join supplier on lo_suppkey = s_suppkey
+where (c_city=&apos;UNITED KI1&apos; or c_city=&apos;UNITED KI5&apos;) and (s_city=&apos;UNITED KI1&apos; or s_city=&apos;UNITED KI5&apos;) and d_yearmonth = &apos;Dec1997&apos;
+group by c_city, s_city, d_year
+order by d_year asc, lo_revenue desc;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q4.1" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select d_year, c_nation, sum(lo_revenue) - sum(lo_supplycost) as profit
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join customer on lo_custkey = c_custkey
+left join supplier on lo_suppkey = s_suppkey
+left join part on lo_partkey = p_partkey
+where c_region = &apos;AMERICA&apos; and s_region = &apos;AMERICA&apos; and (p_mfgr = &apos;MFGR#1&apos; or p_mfgr = &apos;MFGR#2&apos;)
+group by d_year, c_nation
+order by d_year, c_nation;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q4.2" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select d_year, s_nation, p_category, sum(lo_revenue) - sum(lo_supplycost) as profit
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join customer on lo_custkey = c_custkey
+left join supplier on lo_suppkey = s_suppkey
+left join part on lo_partkey = p_partkey
+where c_region = &apos;AMERICA&apos;and s_region = &apos;AMERICA&apos;
+and (d_year = 1997 or d_year = 1998)
+and (p_mfgr = &apos;MFGR#1&apos; or p_mfgr = &apos;MFGR#2&apos;)
+group by d_year, s_nation, p_category
+order by d_year, s_nation, p_category;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Q4.3" enabled="true">
+          <stringProp name="dataSource">kylin-jdbc</stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="query">select d_year, s_city, p_brand, sum(lo_revenue) - sum(lo_supplycost) as profit
+from p_lineorder
+left join dates on lo_orderdate = d_datekey
+left join customer on lo_custkey = c_custkey
+left join supplier on lo_suppkey = s_suppkey
+left join part on lo_partkey = p_partkey
+where c_region = &apos;AMERICA&apos;and s_nation = &apos;UNITED STATES&apos;
+and (d_year = 1997 or d_year = 1998)
+and p_category = &apos;MFGR#14&apos;
+group by d_year, s_city, p_brand
+order by d_year, s_city, p_brand;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultVariable"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
